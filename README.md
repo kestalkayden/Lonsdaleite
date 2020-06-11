@@ -1,9 +1,9 @@
-# Fabric Example Mod
+# Lonsdaleite Mod (Fabric) (1.16-pre3)
 
-## Setup
+## Intro
 
-For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
+Lonsdaleite aim's to add another tier above Diamond/Netherite.
 
 ## License
 
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+This template is available under the CC0 license.
