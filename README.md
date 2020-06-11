@@ -1,8 +1,10 @@
-# Lonsdaleite Mod (Fabric) (1.16-pre3)
+# Lonsdaleite Mod for 1.16
 
-## Intro
+Lonsdaleite is a standalone mod for Minecraft 1.16 (Fabric). It adds Lonsdaleite tools and armor which is a tier above diamond. It's an alternative to Netherite. 
 
-The Lonsdaleite Mod for Minecraft 1.16 (Fabric) aims to add another tier of tools/armor above Diamond and improving over some aspects of Netherite. There are a few steps when creating Lonsdaleite which require plenty of diamond, obsidian, and blocks of coal. This process is then fed through to a blast furnace to create a Lonsdaleite Gem.
+## Downloads
+
+As a general warning, wemember to backup your world before installing new versions! Though really, it's a small mod and shouldn't break anything.
 
 ## Why this?
 
