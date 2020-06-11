@@ -9,7 +9,7 @@ import net.minecraft.util.Lazy;
 public enum KestalToolMaterial implements ToolMaterial {
 	LONSDALEITE(3, 2000, 15.0F, 3F, 20, () -> {
 		return Ingredient.ofItems(Lonsdaleite.REFINED_LONSDALEITE);
-		});
+	});
     
     private final int miningLevel;
     private final int itemDurability;
