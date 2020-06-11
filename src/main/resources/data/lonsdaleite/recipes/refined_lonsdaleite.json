@@ -4,6 +4,6 @@
         "item": "lonsdaleite:prepared_lonsdaleite"
     },
     "result": "lonsdaleite:refined_lonsdaleite",
-    "experience": 20,
-    "cookingtime": 2500
+    "experience": 15,
+    "cookingtime": 3000
 }
