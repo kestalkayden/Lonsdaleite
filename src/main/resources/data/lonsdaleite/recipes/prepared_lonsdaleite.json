@@ -3,7 +3,7 @@
     "pattern": [
         "###",
         "#E#",
-        "###"
+        "#C#"
     ],
     "key": {
         "#": {
@@ -11,6 +11,9 @@
         },
         "E": {
             "item": "lonsdaleite:raw_lonsdaleite"
+        },
+        "C": {
+            "item": "minecraft:gunpowder"
         }
     },
     "result": {
