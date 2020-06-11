@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "#E#",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:coal_block"
+        },
+        "E": {
+            "item": "lonsdaleite:raw_lonsdaleite"
+        }
+    },
+    "result": {
+        "item": "lonsdaleite:prepared_lonsdaleite",
+        "count": 1
+    },
+    "group": "lonsdaleite"
+  }
+  

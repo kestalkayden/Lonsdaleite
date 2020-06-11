@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "#E#",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:diamond"
+        },
+        "E": {
+            "item": "minecraft:obsidian"
+        }
+    },
+    "result": {
+        "item": "lonsdaleite:raw_lonsdaleite",
+        "count": 1
+    },
+    "group": "lonsdaleite"
+  }
+  

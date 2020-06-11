@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:blasting",
+    "ingredient": {
+        "item": "lonsdaleite:prepared_lonsdaleite"
+    },
+    "result": "lonsdaleite:refined_lonsdaleite",
+    "experience": 20,
+    "cookingtime": 1200
+}
