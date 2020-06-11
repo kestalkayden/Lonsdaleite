@@ -4,7 +4,7 @@ Lonsdaleite is a standalone mod for Minecraft 1.16 (Fabric). It adds Lonsdaleite
 
 ## Downloads
 
-As a general warning, wemember to backup your world before installing new versions! Though really, it's a small mod and shouldn't break anything.
+As a general warning, Remember to backup your world before installing new versions! Though really, it's a small mod and shouldn't break anything.
 
 ## Why this?
 
