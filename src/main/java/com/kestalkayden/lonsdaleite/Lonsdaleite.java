@@ -3,19 +3,21 @@ package com.kestalkayden.lonsdaleite;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
+import com.kestalkayden.lonsdaleite.materials.KestalArmorMaterial;
 import com.kestalkayden.lonsdaleite.materials.KestalToolMaterial;
+import com.kestalkayden.lonsdaleite.items.armor.Lonsdaleite_Armor;
 import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Axe;
 import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Hoe;
 import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Pickaxe;
 import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Shovel;
 import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Sword;
-
 
 public class Lonsdaleite implements ModInitializer {
 
@@ -35,6 +37,13 @@ public class Lonsdaleite implements ModInitializer {
     public static final Item LONSDALEITE_SWORD = new Lonsdaleite_Sword(KestalToolMaterial.LONSDALEITE, 6, -2.0F, (new Item.Settings()).group(Lonsdaleite.ITEM_GROUP));
     public static final Item LONSDALEITE_HOE = new Lonsdaleite_Hoe(KestalToolMaterial.LONSDALEITE, 1, -1.5f, (new Item.Settings()).group(Lonsdaleite.ITEM_GROUP));
 
+    // Armor
+    public static final Item LONSDALEITE_HELMET = new Lonsdaleite_Armor(KestalArmorMaterial.LONSDALEITE, EquipmentSlot.HEAD, (new Item.Settings()).group(Lonsdaleite.ITEM_GROUP));
+    public static final Item LONSDALEITE_CHEST = new Lonsdaleite_Armor(KestalArmorMaterial.LONSDALEITE, EquipmentSlot.CHEST, (new Item.Settings()).group(Lonsdaleite.ITEM_GROUP));
+    public static final Item LONSDALEITE_LEGGINGS = new Lonsdaleite_Armor(KestalArmorMaterial.LONSDALEITE, EquipmentSlot.LEGS, (new Item.Settings()).group(Lonsdaleite.ITEM_GROUP));
+    public static final Item LONSDALEITE_BOOTS = new Lonsdaleite_Armor(KestalArmorMaterial.LONSDALEITE, EquipmentSlot.FEET, (new Item.Settings()).group(Lonsdaleite.ITEM_GROUP));
+
+
     @Override
     public void onInitialize() {
         Registry.register(Registry.ITEM, new Identifier("lonsdaleite", "raw_lonsdaleite"), RAW_LONSDALEITE);
@@ -47,6 +56,12 @@ public class Lonsdaleite implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier("lonsdaleite", "lonsdaleite_axe"), LONSDALEITE_AXE);
         Registry.register(Registry.ITEM, new Identifier("lonsdaleite", "lonsdaleite_hoe"), LONSDALEITE_HOE);
         Registry.register(Registry.ITEM, new Identifier("lonsdaleite", "lonsdaleite_sword"), LONSDALEITE_SWORD);
+
+        // Armour
+        Registry.register(Registry.ITEM, new Identifier("lonsdaleite", "lonsdaleite_helmet"), LONSDALEITE_HELMET);
+        Registry.register(Registry.ITEM, new Identifier("lonsdaleite", "lonsdaleite_chest"), LONSDALEITE_CHEST);
+        Registry.register(Registry.ITEM, new Identifier("lonsdaleite", "lonsdaleite_leggings"), LONSDALEITE_LEGGINGS);
+        Registry.register(Registry.ITEM, new Identifier("lonsdaleite", "lonsdaleite_boots"), LONSDALEITE_BOOTS);
     }
     
 }
