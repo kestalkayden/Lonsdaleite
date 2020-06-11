@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "EEE",
+        "E E",
+        "E E"
+    ],
+    "key": {
+        "E": {
+            "item": "lonsdaleite:refined_lonsdaleite"
+        }
+    },
+    "result": {
+        "item": "lonsdaleite:lonsdaleite_leggings",
+        "count": 1
+    },
+    "group": "lonsdaleite"
+  }
+  
