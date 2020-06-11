@@ -14,7 +14,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Lazy;
 
 public enum KestalArmorMaterial implements ArmorMaterial {
-    LONSDALEITE("lonsdaleite", 5, new int[]{1,3,2,1}, 15, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 0.0F, 2.00f, () -> {
+    LONSDALEITE("lonsdaleite", 60, new int[]{5,10,12,4}, 15, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3.0F, 2.00f, () -> {
         return Ingredient.ofItems(Lonsdaleite.REFINED_LONSDALEITE);
     });
 
