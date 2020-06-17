@@ -16,6 +16,7 @@ import com.kestalkayden.lonsdaleite.items.armor.Lonsdaleite_Armor;
 import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Axe;
 import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Hoe;
 import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Pickaxe;
+import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Omnitool;
 import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Shovel;
 import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Sword;
 
@@ -36,6 +37,7 @@ public class Lonsdaleite implements ModInitializer {
     public static final Item LONSDALEITE_AXE = new Lonsdaleite_Axe(KestalToolMaterial.LONSDALEITE, 7, -2.7F, (new Item.Settings()).group(Lonsdaleite.ITEM_GROUP));
     public static final Item LONSDALEITE_SWORD = new Lonsdaleite_Sword(KestalToolMaterial.LONSDALEITE, 6, -2.0F, (new Item.Settings()).group(Lonsdaleite.ITEM_GROUP));
     public static final Item LONSDALEITE_HOE = new Lonsdaleite_Hoe(KestalToolMaterial.LONSDALEITE, 1, -1.5f, (new Item.Settings()).group(Lonsdaleite.ITEM_GROUP));
+    public static final Item LONSDALEITE_OMNITOOL = new Lonsdaleite_Omnitool(KestalToolMaterial.LONSDALEITE, 3, -1.5f, (new Item.Settings()).group(Lonsdaleite.ITEM_GROUP));
 
     // Armor
     public static final Item LONSDALEITE_HELMET = new Lonsdaleite_Armor(KestalArmorMaterial.LONSDALEITE, EquipmentSlot.HEAD, (new Item.Settings()).group(Lonsdaleite.ITEM_GROUP));
@@ -51,6 +53,7 @@ public class Lonsdaleite implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier("lonsdaleite", "refined_lonsdaleite"), REFINED_LONSDALEITE);
 
         // Tools
+        Registry.register(Registry.ITEM, new Identifier("lonsdaleite", "lonsdaleite_omnitool"), LONSDALEITE_OMNITOOL);
         Registry.register(Registry.ITEM, new Identifier("lonsdaleite", "lonsdaleite_pickaxe"), LONSDALEITE_PICKAXE);
         Registry.register(Registry.ITEM, new Identifier("lonsdaleite", "lonsdaleite_shovel"), LONSDALEITE_SHOVEL);
         Registry.register(Registry.ITEM, new Identifier("lonsdaleite", "lonsdaleite_axe"), LONSDALEITE_AXE);
