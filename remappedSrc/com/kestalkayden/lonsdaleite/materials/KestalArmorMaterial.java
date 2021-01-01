@@ -14,12 +14,9 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Lazy;
 
 public enum KestalArmorMaterial implements ArmorMaterial {
-    LONSDALEITE("lonsdaleite", 80, new int[]{4,10,12,5}, 15, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3.0F, 2.00f, () -> {
+    LONSDALEITE("lonsdaleite", 60, new int[]{4,10,12,5}, 15, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3.0F, 2.00f, () -> {
         return Ingredient.ofItems(Lonsdaleite.REFINED_LONSDALEITE);
-    }),PERFECT_LONSDALEITE("lonsdaleite", 90, new int[]{6,12,14,7}, 17, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3.2F, 2.20f, () -> {
-        return Ingredient.ofItems(Lonsdaleite.PERFECT_LONSDALEITE);
     });
-
 
     private static final int[] baseDurability = {13, 15, 16, 11};
     private final String name;
