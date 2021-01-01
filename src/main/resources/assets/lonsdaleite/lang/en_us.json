@@ -3,6 +3,7 @@
     "item.lonsdaleite.raw_lonsdaleite": "Raw Lonsdaleite",
     "item.lonsdaleite.prepared_lonsdaleite": "Prepared Lonsdaleite",
     "item.lonsdaleite.refined_lonsdaleite": "Lonsdaleite Gem",
+    "item.lonsdaleite.perfect_lonsdaleite": "Perfect Lonsdaleite Gem",
     "item.lonsdaleite.lonsdaleite_pickaxe": "Lonsdaleite Pickaxe",
     "item.lonsdaleite.lonsdaleite_omnitool": "Lonsdaleite Omnitool",
     "item.lonsdaleite.lonsdaleite_shovel": "Lonsdaleite Shovel",
@@ -12,5 +13,15 @@
     "item.lonsdaleite.lonsdaleite_helmet": "Lonsdaleite Helmet",
     "item.lonsdaleite.lonsdaleite_chest": "Lonsdaleite Chestpiece",
     "item.lonsdaleite.lonsdaleite_leggings": "Lonsdaleite Leggings",
-    "item.lonsdaleite.lonsdaleite_boots": "Lonsdaleite Boots"
+    "item.lonsdaleite.lonsdaleite_boots": "Lonsdaleite Boots",
+    "item.lonsdaleite.perfect_lonsdaleite_pickaxe": "Perfect Lonsdaleite Pickaxe",
+    "item.lonsdaleite.perfect_lonsdaleite_shovel": "Perfect Lonsdaleite Shovel",
+    "item.lonsdaleite.perfect_lonsdaleite_axe": "Perfect Lonsdaleite Axe",
+    "item.lonsdaleite.perfect_lonsdaleite_hoe": "Perfect Lonsdaleite Hoe",
+    "item.lonsdaleite.perfect_lonsdaleite_sword": "Perfect Lonsdaleite Sword",
+    "item.lonsdaleite.perfect_lonsdaleite_helmet": "Perfect Lonsdaleite Helmet",
+    "item.lonsdaleite.perfect_lonsdaleite_chest": "Perfect Lonsdaleite Chestpiece",
+    "item.lonsdaleite.perfect_lonsdaleite_leggings": "Perfect Lonsdaleite Leggings",
+    "item.lonsdaleite.perfect_lonsdaleite_boots": "Perfect Lonsdaleite Boots",
+    "item.lonsdaleite.perfect_lonsdaleite_omnitool": "Perfect Lonsdaleite Omnitool"
 }

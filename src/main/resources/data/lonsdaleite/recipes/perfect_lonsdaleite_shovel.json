@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " E ",
+        " # ",
+        " # "
+    ],
+    "key": {
+        "E": {
+            "item": "lonsdaleite:perfect_lonsdaleite"
+        },
+        "#": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "item": "lonsdaleite:perfect_lonsdaleite_shovel",
+        "count": 1
+    },
+    "group": "lonsdaleite"
+  }
+  
