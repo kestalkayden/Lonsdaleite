@@ -1,0 +1,6 @@
+{
+    "parent": "item/handheld",
+    "textures": {
+      "layer0": "lonsdaleite:item/lonsdaleite_short_sword"
+    }
+  }

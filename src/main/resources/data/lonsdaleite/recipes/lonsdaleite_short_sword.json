@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "",
+        " E ",
+        " # "
+    ],
+    "key": {
+        "E": {
+            "item": "lonsdaleite:refined_lonsdaleite"
+        },
+        "#": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "item": "lonsdaleite:lonsdaleite_short_sword",
+        "count": 1
+    },
+    "group": "lonsdaleite"
+  }
+  
