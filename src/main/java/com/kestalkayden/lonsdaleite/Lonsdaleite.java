@@ -20,6 +20,7 @@ import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Short_Sword;
 import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Omnitool;
 import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Shovel;
 import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Sword;
+import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_War_Axe;
 import com.kestalkayden.lonsdaleite.items.tools.Perfect_Lonsdaleite_Axe;
 import com.kestalkayden.lonsdaleite.items.tools.Perfect_Lonsdaleite_Hoe;
 import com.kestalkayden.lonsdaleite.items.tools.Perfect_Lonsdaleite_Omnitool;
@@ -27,6 +28,7 @@ import com.kestalkayden.lonsdaleite.items.tools.Perfect_Lonsdaleite_Pickaxe;
 import com.kestalkayden.lonsdaleite.items.tools.Perfect_Lonsdaleite_Short_Sword;
 import com.kestalkayden.lonsdaleite.items.tools.Perfect_Lonsdaleite_Shovel;
 import com.kestalkayden.lonsdaleite.items.tools.Perfect_Lonsdaleite_Sword;
+import com.kestalkayden.lonsdaleite.items.tools.Perfect_Lonsdaleite_War_Axe;
 
 public class Lonsdaleite implements ModInitializer {
 
@@ -46,6 +48,7 @@ public class Lonsdaleite implements ModInitializer {
     public static final Item LONSDALEITE_AXE = new Lonsdaleite_Axe(KestalToolMaterial.LONSDALEITE, 7, -2.5F, (new Item.Settings()).group(Lonsdaleite.ITEM_GROUP));
     public static final Item LONSDALEITE_SWORD = new Lonsdaleite_Sword(KestalToolMaterial.LONSDALEITE, 6, -2.0F, (new Item.Settings()).group(Lonsdaleite.ITEM_GROUP));
     public static final Item LONSDALEITE_SHORT_SWORD = new Lonsdaleite_Short_Sword(KestalToolMaterial.LONSDALEITE, 3, -1.1F, (new Item.Settings()).group(Lonsdaleite.ITEM_GROUP));
+    public static final Item LONSDALEITE_WAR_AXE = new Lonsdaleite_War_Axe(KestalToolMaterial.LONSDALEITE, 10, -3.5F, (new Item.Settings()).group(Lonsdaleite.ITEM_GROUP));
     public static final Item LONSDALEITE_HOE = new Lonsdaleite_Hoe(KestalToolMaterial.LONSDALEITE, 1, -1.5f, (new Item.Settings()).group(Lonsdaleite.ITEM_GROUP));
     public static final Item LONSDALEITE_OMNITOOL = new Lonsdaleite_Omnitool(KestalToolMaterial.LONSDALEITE, 3, -1.5f, (new Item.Settings()).group(Lonsdaleite.ITEM_GROUP));
 
@@ -54,6 +57,7 @@ public class Lonsdaleite implements ModInitializer {
     public static final Item PERFECT_LONSDALEITE_AXE = new Perfect_Lonsdaleite_Axe(KestalToolMaterial.PERFECT_LONSDALEITE, 7, -2.3F, (new Item.Settings()).group(Lonsdaleite.ITEM_GROUP));
     public static final Item PERFECT_LONSDALEITE_SWORD = new Perfect_Lonsdaleite_Sword(KestalToolMaterial.PERFECT_LONSDALEITE, 6, -1.8F, (new Item.Settings()).group(Lonsdaleite.ITEM_GROUP));
     public static final Item PERFECT_LONSDALEITE_SHORT_SWORD = new Perfect_Lonsdaleite_Short_Sword(KestalToolMaterial.PERFECT_LONSDALEITE, 3, -1.0F, (new Item.Settings()).group(Lonsdaleite.ITEM_GROUP));
+    public static final Item PERFECT_LONSDALEITE_WAR_AXE = new Perfect_Lonsdaleite_War_Axe(KestalToolMaterial.PERFECT_LONSDALEITE, 10, -3.2F, (new Item.Settings()).group(Lonsdaleite.ITEM_GROUP));
     public static final Item PERFECT_LONSDALEITE_HOE = new Perfect_Lonsdaleite_Hoe(KestalToolMaterial.PERFECT_LONSDALEITE, 1, -1.2f, (new Item.Settings()).group(Lonsdaleite.ITEM_GROUP));
     public static final Item PERFECT_LONSDALEITE_OMNITOOL = new Perfect_Lonsdaleite_Omnitool(KestalToolMaterial.PERFECT_LONSDALEITE, 3, -1.2f, (new Item.Settings()).group(Lonsdaleite.ITEM_GROUP));
 
@@ -84,6 +88,7 @@ public class Lonsdaleite implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier("lonsdaleite", "lonsdaleite_hoe"), LONSDALEITE_HOE);
         Registry.register(Registry.ITEM, new Identifier("lonsdaleite", "lonsdaleite_sword"), LONSDALEITE_SWORD);
         Registry.register(Registry.ITEM, new Identifier("lonsdaleite", "lonsdaleite_short_sword"), LONSDALEITE_SHORT_SWORD);
+        Registry.register(Registry.ITEM, new Identifier("lonsdaleite", "lonsdaleite_war_axe"), LONSDALEITE_WAR_AXE);
 
 
         Registry.register(Registry.ITEM, new Identifier("lonsdaleite", "perfect_lonsdaleite_pickaxe"), PERFECT_LONSDALEITE_PICKAXE);
@@ -91,6 +96,7 @@ public class Lonsdaleite implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier("lonsdaleite", "perfect_lonsdaleite_axe"), PERFECT_LONSDALEITE_AXE);
         Registry.register(Registry.ITEM, new Identifier("lonsdaleite", "perfect_lonsdaleite_hoe"), PERFECT_LONSDALEITE_HOE);
         Registry.register(Registry.ITEM, new Identifier("lonsdaleite", "perfect_lonsdaleite_sword"), PERFECT_LONSDALEITE_SWORD);
+        Registry.register(Registry.ITEM, new Identifier("lonsdaleite", "perfect_lonsdaleite_war_axe"), PERFECT_LONSDALEITE_WAR_AXE);
         Registry.register(Registry.ITEM, new Identifier("lonsdaleite", "perfect_lonsdaleite_short_sword"), PERFECT_LONSDALEITE_SHORT_SWORD);
         Registry.register(Registry.ITEM, new Identifier("lonsdaleite", "perfect_lonsdaleite_omnitool"), PERFECT_LONSDALEITE_OMNITOOL);
 
