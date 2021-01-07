@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "EE ",
+        "EE ",
+        " E "
+    ],
+    "key": {
+        "E": {
+            "item": "lonsdaleite:perfect_lonsdaleite"
+        }
+    },
+    "result": {
+        "item": "lonsdaleite:perfect_lonsdaleite_war_axe",
+        "count": 1
+    },
+    "group": "lonsdaleite"
+  }
+  
