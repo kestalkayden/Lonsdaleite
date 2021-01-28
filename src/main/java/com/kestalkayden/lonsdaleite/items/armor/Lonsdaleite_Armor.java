@@ -6,8 +6,8 @@ import net.minecraft.item.ArmorMaterial;
 
 public class Lonsdaleite_Armor extends ArmorItem {
 
-    public Lonsdaleite_Armor(ArmorMaterial material, EquipmentSlot eq_slot, Settings settings) {
-        super(material, eq_slot, settings);
+    public Lonsdaleite_Armor(ArmorMaterial material, EquipmentSlot equipmentSlot, Settings settings) {
+        super(material, equipmentSlot, settings);
     }
     
 }
