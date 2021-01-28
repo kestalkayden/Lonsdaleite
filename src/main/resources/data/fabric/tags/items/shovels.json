@@ -1,0 +1,9 @@
+{
+  "replace": "false",
+  "values": [
+    "lonsdaleite:lonsdaleite_shovel",
+    "lonsdaleite:perfect_lonsdaleite_shovel",
+    "lonsdaleite:lonsdaleite_omnitool",
+    "lonsdaleite:perfect_lonsdaleite_omnitool"
+  ]
+}

@@ -2,7 +2,6 @@
   "schemaVersion": 1,
   "id": "lonsdaleite",
   "version": "${version}",
-
   "name": "Lonsdaleite Tools",
   "description": "This is a small expansion mod that includes Lonsdaleite, a tier higher than Diamond. An Alternative material to Netherite, for those who don't like the Nether.",
   "authors": [
@@ -12,10 +11,8 @@
     "homepage": "https://github.com/kestalkayden/Lonsdaleite",
     "sources": "https://github.com/kestalkayden/Lonsdaleite"
   },
-
   "license": "CC0-1.0",
   "icon": "assets/lonsdaleite/icon.png",
-
   "environment": "*",
   "entrypoints": {
     "main": [
@@ -24,7 +21,6 @@
   },
   "mixins": [
   ],
-
   "depends": {
     "fabricloader": ">=0.7.4",
     "fabric": "*",

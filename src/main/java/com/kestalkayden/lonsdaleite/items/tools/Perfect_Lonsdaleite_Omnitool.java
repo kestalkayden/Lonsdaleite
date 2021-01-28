@@ -2,16 +2,10 @@ package com.kestalkayden.lonsdaleite.items.tools;
 
 import com.kestalkayden.lonsdaleite.Lonsdaleite;
 import com.kestalkayden.lonsdaleite.materials.KestalToolMaterial;
-
 import net.minecraft.block.BlockState;
-import net.minecraft.item.*;
-
-import net.minecraft.client.item.TooltipContext;
-import java.util.List;
-import net.minecraft.text.LiteralText;
-import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
-import net.minecraft.world.World;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.PickaxeItem;
+import net.minecraft.item.ToolMaterial;
 
 public class Perfect_Lonsdaleite_Omnitool extends PickaxeItem {
 
@@ -19,18 +13,14 @@ public class Perfect_Lonsdaleite_Omnitool extends PickaxeItem {
         super(material, attackDamage, attackSpeed, settings);
     }
 
-	@Override
-	public boolean isEffectiveOn(BlockState state) {
-		return Lonsdaleite.LONSDALEITE_AXE.isEffectiveOn(state) || Lonsdaleite.LONSDALEITE_SWORD.isEffectiveOn(state) || Lonsdaleite.LONSDALEITE_PICKAXE.isEffectiveOn(state) || Lonsdaleite.LONSDALEITE_SHOVEL.isEffectiveOn(state);
-    }
-    
     @Override
-	public float getMiningSpeedMultiplier(ItemStack stack, BlockState state) {
-        return KestalToolMaterial.LONSDALEITE.getMiningSpeedMultiplier();
+    public boolean isEffectiveOn(BlockState state) {
+        return Lonsdaleite.PERFECT_LONSDALEITE_AXE.isEffectiveOn(state) || Lonsdaleite.PERFECT_LONSDALEITE_SWORD.isEffectiveOn(state) || Lonsdaleite.PERFECT_LONSDALEITE_PICKAXE.isEffectiveOn(state) || Lonsdaleite.PERFECT_LONSDALEITE_SHOVEL.isEffectiveOn(state);
     }
-    
+
     @Override
-    public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
-        tooltip.add(new LiteralText((KestalToolMaterial.PERFECT_LONSDALEITE.getDurability() - itemStack.getDamage()) +" Durability Left").formatted(Formatting.DARK_PURPLE));
+    public float getMiningSpeedMultiplier(ItemStack stack, BlockState state) {
+        return KestalToolMaterial.PERFECT_LONSDALEITE.getMiningSpeedMultiplier();
     }
+
 }
