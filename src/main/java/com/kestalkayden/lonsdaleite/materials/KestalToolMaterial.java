@@ -2,28 +2,25 @@ package com.kestalkayden.lonsdaleite.materials;
 import com.google.common.base.Supplier;
 import com.kestalkayden.lonsdaleite.Lonsdaleite;
 
-import net.minecraft.block.Material;
-import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ToolMaterial;
-import net.minecraft.item.ToolMaterials;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.util.Lazy;
 
 public enum KestalToolMaterial implements ToolMaterial {
 	LONSDALEITE(
 	    3,
-        4500,
-        11.0F,
-        3F,
-        20,
+        1750,
+        8.2F,
+        3.0F,
+        15,
         () -> Ingredient.ofItems(Lonsdaleite.REFINED_LONSDALEITE)
     ),
     PERFECT_LONSDALEITE(
         4,
-        6000,
-        12.0F,
-        5F,
-        25,
+        2350,
+        9.0F,
+        4.0F,
+        20,
         () -> Ingredient.ofItems(Lonsdaleite.REFINED_LONSDALEITE)
     );
 
