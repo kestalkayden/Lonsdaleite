@@ -1,25 +1,38 @@
 package com.kestalkayden.lonsdaleite.materials;
-import com.kestalkayden.lonsdaleite.Lonsdaleite;
 
+import com.kestalkayden.lonsdaleite.Lonsdaleite;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
-
-import java.util.function.Supplier;
-
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Lazy;
 
-public enum KestalArmorMaterial implements ArmorMaterial {
-    LONSDALEITE("lonsdaleite", 80, new int[]{4,10,12,5}, 15, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3.0F, 2.00f, () -> {
-        return Ingredient.ofItems(Lonsdaleite.REFINED_LONSDALEITE);
-    }),PERFECT_LONSDALEITE("lonsdaleite", 90, new int[]{6,12,14,7}, 17, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3.2F, 2.20f, () -> {
-        return Ingredient.ofItems(Lonsdaleite.PERFECT_LONSDALEITE);
-    });
+import java.util.function.Supplier;
 
+public enum KestalArmorMaterial implements ArmorMaterial {
+    LONSDALEITE(
+        "lonsdaleite",
+        35,
+        new int[]{3, 6, 8, 3},
+        15,
+        SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,
+        0.0F,
+        0.00f,
+        () -> Ingredient.ofItems(Lonsdaleite.REFINED_LONSDALEITE)
+    ),
+    PERFECT_LONSDALEITE(
+        "lonsdaleite",
+        38,
+        new int[]{3, 6, 8, 3},
+        17,
+        SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,
+        2.0F,
+        0.00f,
+        () -> Ingredient.ofItems(Lonsdaleite.PERFECT_LONSDALEITE)
+    );
 
     private static final int[] baseDurability = {13, 15, 16, 11};
     private final String name;
@@ -41,32 +54,32 @@ public enum KestalArmorMaterial implements ArmorMaterial {
         this.repairIngredient = new Lazy(repairIngredient);
         this.knockbackResist = knockbackResist;
     }
- 
+
     public int getDurability(EquipmentSlot equipmentSlot_1) {
         return baseDurability[equipmentSlot_1.getEntitySlotId()] * this.durabilityMultiplier;
     }
- 
+
     public int getProtectionAmount(EquipmentSlot equipmentSlot_1) {
         return this.armorValues[equipmentSlot_1.getEntitySlotId()];
     }
- 
+
     public int getEnchantability() {
         return this.enchantability;
     }
- 
+
     public SoundEvent getEquipSound() {
         return this.equipSound;
     }
- 
+
     public Ingredient getRepairIngredient() {
         return this.repairIngredient.get();
     }
- 
+
     @Environment(EnvType.CLIENT)
     public String getName() {
         return this.name;
     }
- 
+
     public float getToughness() {
         return this.toughness;
     }
