@@ -1,0 +1,11 @@
+{
+  "replace": "false",
+  "values": [
+    "lonsdaleite:lonsdaleite_axe",
+    "lonsdaleite:perfect_lonsdaleite_axe",
+    "lonsdaleite:lonsdaleite_war_axe",
+    "lonsdaleite:perfect_lonsdaleite_war_axe",
+    "lonsdaleite:lonsdaleite_omnitool",
+    "lonsdaleite:perfect_lonsdaleite_omnitool"
+  ]
+}

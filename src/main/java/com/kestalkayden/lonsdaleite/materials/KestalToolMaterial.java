@@ -7,12 +7,23 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.util.Lazy;
 
 public enum KestalToolMaterial implements ToolMaterial {
-	LONSDALEITE(3, 4500, 12.0F, 3F, 20, () -> {
-		return Ingredient.ofItems(Lonsdaleite.REFINED_LONSDALEITE);
-    }),PERFECT_LONSDALEITE(4, 6000, 12.0F, 5F, 20, () -> {
-		return Ingredient.ofItems(Lonsdaleite.REFINED_LONSDALEITE);
-	});
-    
+	LONSDALEITE(
+	    3,
+        1750,
+        8.2F,
+        3.0F,
+        15,
+        () -> Ingredient.ofItems(Lonsdaleite.REFINED_LONSDALEITE)
+    ),
+    PERFECT_LONSDALEITE(
+        4,
+        2350,
+        9.0F,
+        4.0F,
+        20,
+        () -> Ingredient.ofItems(Lonsdaleite.REFINED_LONSDALEITE)
+    );
+
     private final int miningLevel;
     private final int itemDurability;
     private final float miningSpeed;
