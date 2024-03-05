@@ -20,7 +20,7 @@ public enum LonsdaleiteArmorMaterial implements ArmorMaterial {
            new int[]{3, 6, 8, 3},
            15,
            SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,
-           0.0F,
+           2.0F,
            0.00f,
            () -> Ingredient.ofItems(Lonsdaleite.REFINED_LONSDALEITE)
    ),
@@ -30,7 +30,7 @@ public enum LonsdaleiteArmorMaterial implements ArmorMaterial {
            new int[]{3, 6, 8, 3},
            17,
            SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,
-           2.0F,
+           3.0F,
            0.00f,
            () -> Ingredient.ofItems(Lonsdaleite.PERFECT_LONSDALEITE)
    );
