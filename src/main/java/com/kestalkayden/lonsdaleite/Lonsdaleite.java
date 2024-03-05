@@ -36,42 +36,43 @@ import com.kestalkayden.lonsdaleite.materials.LonsdaleiteToolMaterial;
 
 public class Lonsdaleite implements ModInitializer {
     public static final Logger LOGGER = LoggerFactory.getLogger("lonsdaleite");
+    private static final FabricItemSettings defaultItemSettings = new FabricItemSettings();
 
 	// RAW STATES OF LONSDALEITE
-    public static final Item RAW_LONSDALEITE = new Item(new FabricItemSettings());
-    public static final Item PREPARED_LONSDALEITE = new Item(new FabricItemSettings());
-    public static final Item REFINED_LONSDALEITE = new Item(new FabricItemSettings());
-    public static final Item PERFECT_LONSDALEITE = new Item(new FabricItemSettings());
+    public static final Item RAW_LONSDALEITE = new Item(defaultItemSettings);
+    public static final Item PREPARED_LONSDALEITE = new Item(defaultItemSettings);
+    public static final Item REFINED_LONSDALEITE = new Item(defaultItemSettings);
+    public static final Item PERFECT_LONSDALEITE = new Item(defaultItemSettings);
 
     // Tools
-    public static final Item LONSDALEITE_AXE = new Lonsdaleite_Axe(LonsdaleiteToolMaterial.LONSDALEITE, 5, -3.0F, new FabricItemSettings());
-    public static final Item PERFECT_LONSDALEITE_AXE = new Perfect_Lonsdaleite_Axe(LonsdaleiteToolMaterial.PERFECT_LONSDALEITE, 5, -3.0F,new Item.Settings());
-    public static final Item LONSDALEITE_HOE = new Lonsdaleite_Hoe(LonsdaleiteToolMaterial.LONSDALEITE, -3, 0.0f, new FabricItemSettings());
-    public static final Item PERFECT_LONSDALEITE_HOE = new Perfect_Lonsdaleite_Hoe(LonsdaleiteToolMaterial.PERFECT_LONSDALEITE, -3, 0.0f, new FabricItemSettings());
-    public static final Item LONSDALEITE_PICKAXE = new Lonsdaleite_Pickaxe(LonsdaleiteToolMaterial.LONSDALEITE, 1, -2.8F, new FabricItemSettings());
-    public static final Item PERFECT_LONSDALEITE_PICKAXE = new Perfect_Lonsdaleite_Pickaxe(LonsdaleiteToolMaterial.PERFECT_LONSDALEITE, 1, -2.8F, new FabricItemSettings());
-    public static final Item LONSDALEITE_SHOVEL = new Lonsdaleite_Shovel(LonsdaleiteToolMaterial.LONSDALEITE, 1.5F, -3.0F, new FabricItemSettings());
-    public static final Item PERFECT_LONSDALEITE_SHOVEL = new Perfect_Lonsdaleite_Shovel(LonsdaleiteToolMaterial.PERFECT_LONSDALEITE, 1.5F, -3.0F, new FabricItemSettings());
-    public static final Item LONSDALEITE_OMNITOOL = new Lonsdaleite_Omnitool(LonsdaleiteToolMaterial.LONSDALEITE, 1, -3.0f, new FabricItemSettings());
-    public static final Item PERFECT_LONSDALEITE_OMNITOOL = new Perfect_Lonsdaleite_Omnitool(LonsdaleiteToolMaterial.PERFECT_LONSDALEITE, 1, -3.0f, new FabricItemSettings());
+    public static final Item LONSDALEITE_AXE = new Lonsdaleite_Axe(LonsdaleiteToolMaterial.LONSDALEITE, 5, -3.0F, defaultItemSettings);
+    public static final Item PERFECT_LONSDALEITE_AXE = new Perfect_Lonsdaleite_Axe(LonsdaleiteToolMaterial.PERFECT_LONSDALEITE, 5, -3.0F, defaultItemSettings);
+    public static final Item LONSDALEITE_HOE = new Lonsdaleite_Hoe(LonsdaleiteToolMaterial.LONSDALEITE, -3, 0.0f, defaultItemSettings);
+    public static final Item PERFECT_LONSDALEITE_HOE = new Perfect_Lonsdaleite_Hoe(LonsdaleiteToolMaterial.PERFECT_LONSDALEITE, -3, 0.0f, defaultItemSettings);
+    public static final Item LONSDALEITE_PICKAXE = new Lonsdaleite_Pickaxe(LonsdaleiteToolMaterial.LONSDALEITE, 1, -2.8F, defaultItemSettings);
+    public static final Item PERFECT_LONSDALEITE_PICKAXE = new Perfect_Lonsdaleite_Pickaxe(LonsdaleiteToolMaterial.PERFECT_LONSDALEITE, 1, -2.8F, defaultItemSettings);
+    public static final Item LONSDALEITE_SHOVEL = new Lonsdaleite_Shovel(LonsdaleiteToolMaterial.LONSDALEITE, 1.5F, -3.0F, defaultItemSettings);
+    public static final Item PERFECT_LONSDALEITE_SHOVEL = new Perfect_Lonsdaleite_Shovel(LonsdaleiteToolMaterial.PERFECT_LONSDALEITE, 1.5F, -3.0F, defaultItemSettings);
+    public static final Item LONSDALEITE_OMNITOOL = new Lonsdaleite_Omnitool(LonsdaleiteToolMaterial.LONSDALEITE, 1, -3.0f, defaultItemSettings);
+    public static final Item PERFECT_LONSDALEITE_OMNITOOL = new Perfect_Lonsdaleite_Omnitool(LonsdaleiteToolMaterial.PERFECT_LONSDALEITE, 1, -3.0f, defaultItemSettings);
 
     // Weapons
-    public static final Item LONSDALEITE_SWORD = new Lonsdaleite_Sword(LonsdaleiteToolMaterial.LONSDALEITE, 4, -2.4F, new FabricItemSettings());
-    public static final Item PERFECT_LONSDALEITE_SWORD = new Perfect_Lonsdaleite_Sword(LonsdaleiteToolMaterial.PERFECT_LONSDALEITE, 5, -2.4F, new FabricItemSettings());
-    public static final Item LONSDALEITE_SHORT_SWORD = new Lonsdaleite_Short_Sword(LonsdaleiteToolMaterial.LONSDALEITE, -1, -0.5F, new FabricItemSettings());
-    public static final Item PERFECT_LONSDALEITE_SHORT_SWORD = new Perfect_Lonsdaleite_Short_Sword(LonsdaleiteToolMaterial.PERFECT_LONSDALEITE, 0, -0.5F, new FabricItemSettings());
-    public static final Item LONSDALEITE_WAR_AXE = new Lonsdaleite_War_Axe(LonsdaleiteToolMaterial.LONSDALEITE, 6, -3.2F, new FabricItemSettings());
-    public static final Item PERFECT_LONSDALEITE_WAR_AXE = new Perfect_Lonsdaleite_War_Axe(LonsdaleiteToolMaterial.PERFECT_LONSDALEITE, 7, -3.2F, new FabricItemSettings());
+    public static final Item LONSDALEITE_SWORD = new Lonsdaleite_Sword(LonsdaleiteToolMaterial.LONSDALEITE, 4, -2.4F, defaultItemSettings);
+    public static final Item PERFECT_LONSDALEITE_SWORD = new Perfect_Lonsdaleite_Sword(LonsdaleiteToolMaterial.PERFECT_LONSDALEITE, 5, -2.4F, defaultItemSettings);
+    public static final Item LONSDALEITE_SHORT_SWORD = new Lonsdaleite_Short_Sword(LonsdaleiteToolMaterial.LONSDALEITE, -1, -0.5F, defaultItemSettings);
+    public static final Item PERFECT_LONSDALEITE_SHORT_SWORD = new Perfect_Lonsdaleite_Short_Sword(LonsdaleiteToolMaterial.PERFECT_LONSDALEITE, 0, -0.5F, defaultItemSettings);
+    public static final Item LONSDALEITE_WAR_AXE = new Lonsdaleite_War_Axe(LonsdaleiteToolMaterial.LONSDALEITE, 6, -3.2F, defaultItemSettings);
+    public static final Item PERFECT_LONSDALEITE_WAR_AXE = new Perfect_Lonsdaleite_War_Axe(LonsdaleiteToolMaterial.PERFECT_LONSDALEITE, 7, -3.2F, defaultItemSettings);
 
     // Armor
-    public static final Item LONSDALEITE_HELMET = new LonsdaleiteArmor(LonsdaleiteArmorMaterial.LONSDALEITE, ArmorItem.Type.HELMET, new FabricItemSettings());
-    public static final Item PERFECT_LONSDALEITE_HELMET = new LonsdaleiteArmor(LonsdaleiteArmorMaterial.PERFECT_LONSDALEITE, ArmorItem.Type.HELMET, new FabricItemSettings());
-    public static final Item LONSDALEITE_CHEST = new LonsdaleiteArmor(LonsdaleiteArmorMaterial.LONSDALEITE, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
-    public static final Item PERFECT_LONSDALEITE_CHEST = new LonsdaleiteArmor(LonsdaleiteArmorMaterial.PERFECT_LONSDALEITE, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
-    public static final Item LONSDALEITE_LEGGINGS = new LonsdaleiteArmor(LonsdaleiteArmorMaterial.LONSDALEITE, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
-    public static final Item PERFECT_LONSDALEITE_LEGGINGS = new LonsdaleiteArmor(LonsdaleiteArmorMaterial.PERFECT_LONSDALEITE, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
-    public static final Item LONSDALEITE_BOOTS = new LonsdaleiteArmor(LonsdaleiteArmorMaterial.LONSDALEITE, ArmorItem.Type.BOOTS, new FabricItemSettings());
-    public static final Item PERFECT_LONSDALEITE_BOOTS = new LonsdaleiteArmor(LonsdaleiteArmorMaterial.PERFECT_LONSDALEITE, ArmorItem.Type.BOOTS, new FabricItemSettings());
+    public static final Item LONSDALEITE_HELMET = new LonsdaleiteArmor(LonsdaleiteArmorMaterial.LONSDALEITE, ArmorItem.Type.HELMET, defaultItemSettings);
+    public static final Item PERFECT_LONSDALEITE_HELMET = new LonsdaleiteArmor(LonsdaleiteArmorMaterial.PERFECT_LONSDALEITE, ArmorItem.Type.HELMET, defaultItemSettings);
+    public static final Item LONSDALEITE_CHEST = new LonsdaleiteArmor(LonsdaleiteArmorMaterial.LONSDALEITE, ArmorItem.Type.CHESTPLATE, defaultItemSettings);
+    public static final Item PERFECT_LONSDALEITE_CHEST = new LonsdaleiteArmor(LonsdaleiteArmorMaterial.PERFECT_LONSDALEITE, ArmorItem.Type.CHESTPLATE, defaultItemSettings);
+    public static final Item LONSDALEITE_LEGGINGS = new LonsdaleiteArmor(LonsdaleiteArmorMaterial.LONSDALEITE, ArmorItem.Type.LEGGINGS, defaultItemSettings);
+    public static final Item PERFECT_LONSDALEITE_LEGGINGS = new LonsdaleiteArmor(LonsdaleiteArmorMaterial.PERFECT_LONSDALEITE, ArmorItem.Type.LEGGINGS, defaultItemSettings);
+    public static final Item LONSDALEITE_BOOTS = new LonsdaleiteArmor(LonsdaleiteArmorMaterial.LONSDALEITE, ArmorItem.Type.BOOTS, defaultItemSettings);
+    public static final Item PERFECT_LONSDALEITE_BOOTS = new LonsdaleiteArmor(LonsdaleiteArmorMaterial.PERFECT_LONSDALEITE, ArmorItem.Type.BOOTS, defaultItemSettings);
 
 
 	@Override
