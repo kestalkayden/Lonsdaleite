@@ -6,7 +6,7 @@ import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.util.Lazy;
 
-public enum KestalToolMaterial implements ToolMaterial {
+public enum LonsdaleiteToolMaterial implements ToolMaterial {
 	LONSDALEITE(
 	    3,
         1750,
@@ -31,7 +31,7 @@ public enum KestalToolMaterial implements ToolMaterial {
     private final int enchantability;
     private final Lazy<Ingredient> repairIngredient;
  
-    KestalToolMaterial(int miningLevel, int itemDurability, float miningSpeed, float attackDamage, int enchantability, Supplier<Ingredient> repairIngredient) {
+    LonsdaleiteToolMaterial(int miningLevel, int itemDurability, float miningSpeed, float attackDamage, int enchantability, Supplier<Ingredient> repairIngredient) {
         this.miningLevel = miningLevel;
         this.itemDurability = itemDurability;
         this.miningSpeed = miningSpeed;
