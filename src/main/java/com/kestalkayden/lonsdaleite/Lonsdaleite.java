@@ -35,7 +35,9 @@ import com.kestalkayden.lonsdaleite.materials.LonsdaleiteArmorMaterial;
 import com.kestalkayden.lonsdaleite.materials.LonsdaleiteToolMaterial;
 
 public class Lonsdaleite implements ModInitializer {
-    public static final Logger LOGGER = LoggerFactory.getLogger("lonsdaleite");
+    public static final String MOD_ID = "lonsdaleite";
+    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+
 
 	// RAW STATES OF LONSDALEITE
     public static final Item RAW_LONSDALEITE = new Item(new FabricItemSettings());
@@ -79,10 +81,10 @@ public class Lonsdaleite implements ModInitializer {
     public void onInitialize() {
 		LOGGER.info("Initializing Lonsedaleite Mod");
 
-		Registry.register(Registries.ITEM, new Identifier("lonsdaleite", "raw_lonsdaleite"), RAW_LONSDALEITE);
-        Registry.register(Registries.ITEM, new Identifier("lonsdaleite", "prepared_lonsdaleite"), PREPARED_LONSDALEITE);
-        Registry.register(Registries.ITEM, new Identifier("lonsdaleite", "refined_lonsdaleite"), REFINED_LONSDALEITE);
-        Registry.register(Registries.ITEM, new Identifier("lonsdaleite", "perfect_lonsdaleite"), PERFECT_LONSDALEITE);		
+		Registry.register(Registries.ITEM, new Identifier(MOD_ID, "raw_lonsdaleite"), RAW_LONSDALEITE);
+        Registry.register(Registries.ITEM, new Identifier(MOD_ID, "prepared_lonsdaleite"), PREPARED_LONSDALEITE);
+        Registry.register(Registries.ITEM, new Identifier(MOD_ID, "refined_lonsdaleite"), REFINED_LONSDALEITE);
+        Registry.register(Registries.ITEM, new Identifier(MOD_ID, "perfect_lonsdaleite"), PERFECT_LONSDALEITE);		
 		
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(content -> {
 			content.addAfter(Items.RAW_GOLD, RAW_LONSDALEITE);
@@ -92,34 +94,34 @@ public class Lonsdaleite implements ModInitializer {
 		});
 
         // Lonsdaleite Tools
-        Registry.register(Registries.ITEM, new Identifier("lonsdaleite", "lonsdaleite_omnitool"), LONSDALEITE_OMNITOOL);
-        Registry.register(Registries.ITEM, new Identifier("lonsdaleite", "lonsdaleite_pickaxe"), LONSDALEITE_PICKAXE);
-        Registry.register(Registries.ITEM, new Identifier("lonsdaleite", "lonsdaleite_shovel"), LONSDALEITE_SHOVEL);
-        Registry.register(Registries.ITEM, new Identifier("lonsdaleite", "lonsdaleite_axe"), LONSDALEITE_AXE);
-        Registry.register(Registries.ITEM, new Identifier("lonsdaleite", "lonsdaleite_hoe"), LONSDALEITE_HOE);
-        Registry.register(Registries.ITEM, new Identifier("lonsdaleite", "perfect_lonsdaleite_pickaxe"), PERFECT_LONSDALEITE_PICKAXE);
-        Registry.register(Registries.ITEM, new Identifier("lonsdaleite", "perfect_lonsdaleite_shovel"), PERFECT_LONSDALEITE_SHOVEL);
-        Registry.register(Registries.ITEM, new Identifier("lonsdaleite", "perfect_lonsdaleite_axe"), PERFECT_LONSDALEITE_AXE);
-        Registry.register(Registries.ITEM, new Identifier("lonsdaleite", "perfect_lonsdaleite_hoe"), PERFECT_LONSDALEITE_HOE);
-        Registry.register(Registries.ITEM, new Identifier("lonsdaleite", "perfect_lonsdaleite_omnitool"), PERFECT_LONSDALEITE_OMNITOOL);		
+        Registry.register(Registries.ITEM, new Identifier(MOD_ID, "lonsdaleite_omnitool"), LONSDALEITE_OMNITOOL);
+        Registry.register(Registries.ITEM, new Identifier(MOD_ID, "lonsdaleite_pickaxe"), LONSDALEITE_PICKAXE);
+        Registry.register(Registries.ITEM, new Identifier(MOD_ID, "lonsdaleite_shovel"), LONSDALEITE_SHOVEL);
+        Registry.register(Registries.ITEM, new Identifier(MOD_ID, "lonsdaleite_axe"), LONSDALEITE_AXE);
+        Registry.register(Registries.ITEM, new Identifier(MOD_ID, "lonsdaleite_hoe"), LONSDALEITE_HOE);
+        Registry.register(Registries.ITEM, new Identifier(MOD_ID, "perfect_lonsdaleite_pickaxe"), PERFECT_LONSDALEITE_PICKAXE);
+        Registry.register(Registries.ITEM, new Identifier(MOD_ID, "perfect_lonsdaleite_shovel"), PERFECT_LONSDALEITE_SHOVEL);
+        Registry.register(Registries.ITEM, new Identifier(MOD_ID, "perfect_lonsdaleite_axe"), PERFECT_LONSDALEITE_AXE);
+        Registry.register(Registries.ITEM, new Identifier(MOD_ID, "perfect_lonsdaleite_hoe"), PERFECT_LONSDALEITE_HOE);
+        Registry.register(Registries.ITEM, new Identifier(MOD_ID, "perfect_lonsdaleite_omnitool"), PERFECT_LONSDALEITE_OMNITOOL);		
 
 		// Lonsdaleite Weapons
-        Registry.register(Registries.ITEM, new Identifier("lonsdaleite", "lonsdaleite_sword"), LONSDALEITE_SWORD);
-        Registry.register(Registries.ITEM, new Identifier("lonsdaleite", "lonsdaleite_short_sword"), LONSDALEITE_SHORT_SWORD);
-        Registry.register(Registries.ITEM, new Identifier("lonsdaleite", "lonsdaleite_war_axe"), LONSDALEITE_WAR_AXE);
-        Registry.register(Registries.ITEM, new Identifier("lonsdaleite", "perfect_lonsdaleite_sword"), PERFECT_LONSDALEITE_SWORD);
-        Registry.register(Registries.ITEM, new Identifier("lonsdaleite", "perfect_lonsdaleite_war_axe"), PERFECT_LONSDALEITE_WAR_AXE);
-        Registry.register(Registries.ITEM, new Identifier("lonsdaleite", "perfect_lonsdaleite_short_sword"), PERFECT_LONSDALEITE_SHORT_SWORD);
+        Registry.register(Registries.ITEM, new Identifier(MOD_ID, "lonsdaleite_sword"), LONSDALEITE_SWORD);
+        Registry.register(Registries.ITEM, new Identifier(MOD_ID, "lonsdaleite_short_sword"), LONSDALEITE_SHORT_SWORD);
+        Registry.register(Registries.ITEM, new Identifier(MOD_ID, "lonsdaleite_war_axe"), LONSDALEITE_WAR_AXE);
+        Registry.register(Registries.ITEM, new Identifier(MOD_ID, "perfect_lonsdaleite_sword"), PERFECT_LONSDALEITE_SWORD);
+        Registry.register(Registries.ITEM, new Identifier(MOD_ID, "perfect_lonsdaleite_war_axe"), PERFECT_LONSDALEITE_WAR_AXE);
+        Registry.register(Registries.ITEM, new Identifier(MOD_ID, "perfect_lonsdaleite_short_sword"), PERFECT_LONSDALEITE_SHORT_SWORD);
 
 		// Lonsdaleite Armor
-        Registry.register(Registries.ITEM, new Identifier("lonsdaleite", "lonsdaleite_helmet"), LONSDALEITE_HELMET);
-        Registry.register(Registries.ITEM, new Identifier("lonsdaleite", "lonsdaleite_chest"), LONSDALEITE_CHEST);
-        Registry.register(Registries.ITEM, new Identifier("lonsdaleite", "lonsdaleite_leggings"), LONSDALEITE_LEGGINGS);
-        Registry.register(Registries.ITEM, new Identifier("lonsdaleite", "lonsdaleite_boots"), LONSDALEITE_BOOTS);
-        Registry.register(Registries.ITEM, new Identifier("lonsdaleite", "perfect_lonsdaleite_helmet"), PERFECT_LONSDALEITE_HELMET);
-        Registry.register(Registries.ITEM, new Identifier("lonsdaleite", "perfect_lonsdaleite_chest"), PERFECT_LONSDALEITE_CHEST);
-        Registry.register(Registries.ITEM, new Identifier("lonsdaleite", "perfect_lonsdaleite_leggings"), PERFECT_LONSDALEITE_LEGGINGS);
-        Registry.register(Registries.ITEM, new Identifier("lonsdaleite", "perfect_lonsdaleite_boots"), PERFECT_LONSDALEITE_BOOTS);
+        Registry.register(Registries.ITEM, new Identifier(MOD_ID, "lonsdaleite_helmet"), LONSDALEITE_HELMET);
+        Registry.register(Registries.ITEM, new Identifier(MOD_ID, "lonsdaleite_chest"), LONSDALEITE_CHEST);
+        Registry.register(Registries.ITEM, new Identifier(MOD_ID, "lonsdaleite_leggings"), LONSDALEITE_LEGGINGS);
+        Registry.register(Registries.ITEM, new Identifier(MOD_ID, "lonsdaleite_boots"), LONSDALEITE_BOOTS);
+        Registry.register(Registries.ITEM, new Identifier(MOD_ID, "perfect_lonsdaleite_helmet"), PERFECT_LONSDALEITE_HELMET);
+        Registry.register(Registries.ITEM, new Identifier(MOD_ID, "perfect_lonsdaleite_chest"), PERFECT_LONSDALEITE_CHEST);
+        Registry.register(Registries.ITEM, new Identifier(MOD_ID, "perfect_lonsdaleite_leggings"), PERFECT_LONSDALEITE_LEGGINGS);
+        Registry.register(Registries.ITEM, new Identifier(MOD_ID, "perfect_lonsdaleite_boots"), PERFECT_LONSDALEITE_BOOTS);
 
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(content -> {
 			content.addAfter(Items.NETHERITE_HOE, LONSDALEITE_PICKAXE);
