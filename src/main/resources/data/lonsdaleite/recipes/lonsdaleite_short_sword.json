@@ -6,15 +6,11 @@
         " # "
     ],
     "key": {
-        "E": {
-            "item": "lonsdaleite:refined_lonsdaleite"
-        },
-        "#": {
-            "item": "minecraft:stick"
-        }
+        "E": "lonsdaleite:refined_lonsdaleite",
+        "#": "minecraft:stick"
     },
     "result": {
-        "item": "lonsdaleite:lonsdaleite_short_sword",
+        "id": "lonsdaleite:lonsdaleite_short_sword",
         "count": 1
     }
   }

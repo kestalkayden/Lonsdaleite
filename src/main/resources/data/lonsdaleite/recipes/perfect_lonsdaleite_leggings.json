@@ -6,12 +6,10 @@
         "E E"
     ],
     "key": {
-        "E": {
-            "item": "lonsdaleite:perfect_lonsdaleite"
-        }
+        "E": "lonsdaleite:perfect_lonsdaleite"
     },
     "result": {
-        "item": "lonsdaleite:perfect_lonsdaleite_leggings",
+        "id": "lonsdaleite:perfect_lonsdaleite_leggings",
         "count": 1
     }
   }

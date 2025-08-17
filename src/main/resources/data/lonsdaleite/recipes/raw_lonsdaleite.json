@@ -6,15 +6,11 @@
         "###"
     ],
     "key": {
-        "#": {
-            "item": "minecraft:diamond"
-        },
-        "E": {
-            "item": "minecraft:obsidian"
-        }
+        "#": "minecraft:diamond",
+        "E": "minecraft:obsidian"
     },
     "result": {
-        "item": "lonsdaleite:raw_lonsdaleite",
+        "id": "lonsdaleite:raw_lonsdaleite",
         "count": 1
     }
   }

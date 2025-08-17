@@ -6,12 +6,10 @@
         "EEE"
     ],
     "key": {
-        "E": {
-            "item": "lonsdaleite:perfect_lonsdaleite"
-        }
+        "E": "lonsdaleite:perfect_lonsdaleite"
     },
     "result": {
-        "item": "lonsdaleite:perfect_lonsdaleite_chest",
+        "id": "lonsdaleite:perfect_lonsdaleite_chest",
         "count": 1
     }
   }

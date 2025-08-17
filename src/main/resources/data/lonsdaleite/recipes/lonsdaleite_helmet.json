@@ -6,12 +6,10 @@
         "   "
     ],
     "key": {
-        "E": {
-            "item": "lonsdaleite:refined_lonsdaleite"
-        }
+        "E": "lonsdaleite:refined_lonsdaleite"
     },
     "result": {
-        "item": "lonsdaleite:lonsdaleite_helmet",
+        "id": "lonsdaleite:lonsdaleite_helmet",
         "count": 1
     }
   }
