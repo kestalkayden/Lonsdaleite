@@ -44,4 +44,14 @@ public class LonsdaleiteToolMaterials {
         }
         return 1.0F; // Default for unknown materials
     }
+    
+    // Helper method to get enchantability values for our custom materials
+    public static int getEnchantability(ToolMaterial material) {
+        if (material == LONSDALEITE) {
+            return 15;
+        } else if (material == PERFECT_LONSDALEITE) {
+            return 20;
+        }
+        return 0; // Default for unknown materials
+    }
 }
