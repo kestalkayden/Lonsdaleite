@@ -3,6 +3,14 @@ package com.kestalkayden.lonsdaleite;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.EnchantableComponent;
+import net.minecraft.component.type.AttributeModifiersComponent;
+import net.minecraft.component.type.AttributeModifierSlot;
+import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.attribute.EntityAttributeModifier;
+import net.minecraft.component.type.ToolComponent;
+import net.minecraft.registry.Registries;
 import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -95,6 +103,34 @@ public class Lonsdaleite implements ModInitializer {
         RegistryKey<Item> itemKey = RegistryKey.of(RegistryKeys.ITEM, itemId);
         return new Item.Settings().registryKey(itemKey);
     }
+    
+    // Helper method to create item settings with registry key and enchantability
+    private static Item.Settings createItemSettings(String name, int enchantability) {
+        Identifier itemId = Identifier.of(MOD_ID, name);
+        RegistryKey<Item> itemKey = RegistryKey.of(RegistryKeys.ITEM, itemId);
+        return new Item.Settings().registryKey(itemKey)
+            .component(DataComponentTypes.ENCHANTABLE, new EnchantableComponent(enchantability));
+    }
+    
+    // Helper method to create tool settings with attack damage and speed
+    private static Item.Settings createToolSettings(String name, int enchantability, int attackDamage, float attackSpeed) {
+        Identifier itemId = Identifier.of(MOD_ID, name);
+        RegistryKey<Item> itemKey = RegistryKey.of(RegistryKeys.ITEM, itemId);
+        return new Item.Settings().registryKey(itemKey)
+            .component(DataComponentTypes.ENCHANTABLE, new EnchantableComponent(enchantability))
+            .component(DataComponentTypes.ATTRIBUTE_MODIFIERS,
+                AttributeModifiersComponent.builder()
+                    .add(EntityAttributes.ATTACK_DAMAGE,
+                        new EntityAttributeModifier(Identifier.of("base_attack_damage"), 
+                            attackDamage, EntityAttributeModifier.Operation.ADD_VALUE),
+                        AttributeModifierSlot.MAINHAND)
+                    .add(EntityAttributes.ATTACK_SPEED,
+                        new EntityAttributeModifier(Identifier.of("base_attack_speed"), 
+                            attackSpeed, EntityAttributeModifier.Operation.ADD_VALUE),
+                        AttributeModifierSlot.MAINHAND)
+                    .build());
+    }
+    
 
 
 
@@ -111,25 +147,25 @@ public class Lonsdaleite implements ModInitializer {
         REFINED_LONSDALEITE = registerItem("refined_lonsdaleite", new Item(createItemSettings("refined_lonsdaleite")));
         PERFECT_LONSDALEITE = registerItem("perfect_lonsdaleite", new Item(createItemSettings("perfect_lonsdaleite")));
         
-        // Register tools
-        LONSDALEITE_AXE = registerItem("lonsdaleite_axe", new Lonsdaleite_Axe(LonsdaleiteToolMaterials.LONSDALEITE, 7, -3.0F, createItemSettings("lonsdaleite_axe")));
-        PERFECT_LONSDALEITE_AXE = registerItem("perfect_lonsdaleite_axe", new Perfect_Lonsdaleite_Axe(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 8, -3.0F, createItemSettings("perfect_lonsdaleite_axe")));
-        LONSDALEITE_HOE = registerItem("lonsdaleite_hoe", new Lonsdaleite_Hoe(LonsdaleiteToolMaterials.LONSDALEITE, 1, 0.0F, createItemSettings("lonsdaleite_hoe")));
-        PERFECT_LONSDALEITE_HOE = registerItem("perfect_lonsdaleite_hoe", new Perfect_Lonsdaleite_Hoe(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 2, 0.0F, createItemSettings("perfect_lonsdaleite_hoe")));
-        LONSDALEITE_PICKAXE = registerItem("lonsdaleite_pickaxe", new Lonsdaleite_Pickaxe(LonsdaleiteToolMaterials.LONSDALEITE, 1, -2.8F, createItemSettings("lonsdaleite_pickaxe")));
-        PERFECT_LONSDALEITE_PICKAXE = registerItem("perfect_lonsdaleite_pickaxe", new Perfect_Lonsdaleite_Pickaxe(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 1, -2.8F, createItemSettings("perfect_lonsdaleite_pickaxe")));
-        LONSDALEITE_SHOVEL = registerItem("lonsdaleite_shovel", new Lonsdaleite_Shovel(LonsdaleiteToolMaterials.LONSDALEITE, 2, -3.0F, createItemSettings("lonsdaleite_shovel")));
-        PERFECT_LONSDALEITE_SHOVEL = registerItem("perfect_lonsdaleite_shovel", new Perfect_Lonsdaleite_Shovel(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 2, -3.0F, createItemSettings("perfect_lonsdaleite_shovel")));
-        LONSDALEITE_OMNITOOL = registerItem("lonsdaleite_omnitool", new Lonsdaleite_Omnitool(LonsdaleiteToolMaterials.LONSDALEITE, 1, -3.0F, createItemSettings("lonsdaleite_omnitool")));
-        PERFECT_LONSDALEITE_OMNITOOL = registerItem("perfect_lonsdaleite_omnitool", new Perfect_Lonsdaleite_Omnitool(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 1, -3.0F, createItemSettings("perfect_lonsdaleite_omnitool")));
+        // Register tools  
+        LONSDALEITE_AXE = registerItem("lonsdaleite_axe", new Lonsdaleite_Axe(LonsdaleiteToolMaterials.LONSDALEITE, 8, -3.0F, createToolSettings("lonsdaleite_axe", 15, 8, -3.0F)));
+        PERFECT_LONSDALEITE_AXE = registerItem("perfect_lonsdaleite_axe", new Perfect_Lonsdaleite_Axe(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 11, -2.9F, createToolSettings("perfect_lonsdaleite_axe", 20, 11, -2.9F)));
+        LONSDALEITE_HOE = registerItem("lonsdaleite_hoe", new Lonsdaleite_Hoe(LonsdaleiteToolMaterials.LONSDALEITE, 2, 0.0F, createToolSettings("lonsdaleite_hoe", 15, 2, 0.0F)));
+        PERFECT_LONSDALEITE_HOE = registerItem("perfect_lonsdaleite_hoe", new Perfect_Lonsdaleite_Hoe(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 3, 0.2F, createToolSettings("perfect_lonsdaleite_hoe", 20, 3, 0.2F)));
+        LONSDALEITE_PICKAXE = registerItem("lonsdaleite_pickaxe", new Lonsdaleite_Pickaxe(LonsdaleiteToolMaterials.LONSDALEITE, 5, -2.8F, createToolSettings("lonsdaleite_pickaxe", 15, 5, -2.8F)));
+        PERFECT_LONSDALEITE_PICKAXE = registerItem("perfect_lonsdaleite_pickaxe", new Perfect_Lonsdaleite_Pickaxe(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 7, -2.7F, createToolSettings("perfect_lonsdaleite_pickaxe", 20, 7, -2.7F)));
+        LONSDALEITE_SHOVEL = registerItem("lonsdaleite_shovel", new Lonsdaleite_Shovel(LonsdaleiteToolMaterials.LONSDALEITE, 4, -3.0F, createToolSettings("lonsdaleite_shovel", 15, 4, -3.0F)));
+        PERFECT_LONSDALEITE_SHOVEL = registerItem("perfect_lonsdaleite_shovel", new Perfect_Lonsdaleite_Shovel(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 6, -2.9F, createToolSettings("perfect_lonsdaleite_shovel", 20, 6, -2.9F)));
+        LONSDALEITE_OMNITOOL = registerItem("lonsdaleite_omnitool", new Lonsdaleite_Omnitool(LonsdaleiteToolMaterials.LONSDALEITE, 3, -2.9F, createToolSettings("lonsdaleite_omnitool", 15, 3, -2.9F)));
+        PERFECT_LONSDALEITE_OMNITOOL = registerItem("perfect_lonsdaleite_omnitool", new Perfect_Lonsdaleite_Omnitool(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 5, -2.8F, createToolSettings("perfect_lonsdaleite_omnitool", 20, 5, -2.8F)));
         
         // Register weapons
-        LONSDALEITE_SWORD = registerItem("lonsdaleite_sword", new Lonsdaleite_Sword(LonsdaleiteToolMaterials.LONSDALEITE, 4, -2.4F, createItemSettings("lonsdaleite_sword")));
-        PERFECT_LONSDALEITE_SWORD = registerItem("perfect_lonsdaleite_sword", new Perfect_Lonsdaleite_Sword(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 5, -2.4F, createItemSettings("perfect_lonsdaleite_sword")));
-        LONSDALEITE_SHORT_SWORD = registerItem("lonsdaleite_short_sword", new Lonsdaleite_Short_Sword(LonsdaleiteToolMaterials.LONSDALEITE, -1, -0.5F, createItemSettings("lonsdaleite_short_sword")));
-        PERFECT_LONSDALEITE_SHORT_SWORD = registerItem("perfect_lonsdaleite_short_sword", new Perfect_Lonsdaleite_Short_Sword(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 0, -0.5F, createItemSettings("perfect_lonsdaleite_short_sword")));
-        LONSDALEITE_WAR_AXE = registerItem("lonsdaleite_war_axe", new Lonsdaleite_War_Axe(LonsdaleiteToolMaterials.LONSDALEITE, 6, -3.2F, createItemSettings("lonsdaleite_war_axe")));
-        PERFECT_LONSDALEITE_WAR_AXE = registerItem("perfect_lonsdaleite_war_axe", new Perfect_Lonsdaleite_War_Axe(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 8, -3.2F, createItemSettings("perfect_lonsdaleite_war_axe")));
+        LONSDALEITE_SWORD = registerItem("lonsdaleite_sword", new Lonsdaleite_Sword(LonsdaleiteToolMaterials.LONSDALEITE, 6, -2.4F, createToolSettings("lonsdaleite_sword", 15, 6, -2.4F)));
+        PERFECT_LONSDALEITE_SWORD = registerItem("perfect_lonsdaleite_sword", new Perfect_Lonsdaleite_Sword(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 9, -2.3F, createToolSettings("perfect_lonsdaleite_sword", 20, 9, -2.3F)));
+        LONSDALEITE_SHORT_SWORD = registerItem("lonsdaleite_short_sword", new Lonsdaleite_Short_Sword(LonsdaleiteToolMaterials.LONSDALEITE, 1, -0.7F, createToolSettings("lonsdaleite_short_sword", 15, 1, -0.7F)));
+        PERFECT_LONSDALEITE_SHORT_SWORD = registerItem("perfect_lonsdaleite_short_sword", new Perfect_Lonsdaleite_Short_Sword(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 2, -0.4F, createToolSettings("perfect_lonsdaleite_short_sword", 20, 2, -0.4F)));
+        LONSDALEITE_WAR_AXE = registerItem("lonsdaleite_war_axe", new Lonsdaleite_War_Axe(LonsdaleiteToolMaterials.LONSDALEITE, 9, -3.9F, createToolSettings("lonsdaleite_war_axe", 15, 9, -3.9F)));
+        PERFECT_LONSDALEITE_WAR_AXE = registerItem("perfect_lonsdaleite_war_axe", new Perfect_Lonsdaleite_War_Axe(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 13, -3.7F, createToolSettings("perfect_lonsdaleite_war_axe", 20, 13, -3.7F)));
 
         // Register armor items
         LONSDALEITE_HELMET = registerItem("lonsdaleite_helmet", 
