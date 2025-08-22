@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "lonsdaleite:lonsdaleite_sword",
+    "lonsdaleite:perfect_lonsdaleite_sword",
+    "lonsdaleite:lonsdaleite_short_sword",
+    "lonsdaleite:perfect_lonsdaleite_short_sword"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "lonsdaleite:lonsdaleite_pickaxe",
+    "lonsdaleite:perfect_lonsdaleite_pickaxe",
+    "lonsdaleite:lonsdaleite_axe",
+    "lonsdaleite:perfect_lonsdaleite_axe",
+    "lonsdaleite:lonsdaleite_shovel",
+    "lonsdaleite:perfect_lonsdaleite_shovel",
+    "lonsdaleite:lonsdaleite_hoe",
+    "lonsdaleite:perfect_lonsdaleite_hoe",
+    "lonsdaleite:lonsdaleite_omnitool",
+    "lonsdaleite:perfect_lonsdaleite_omnitool"
+  ]
+}
