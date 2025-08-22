@@ -160,8 +160,8 @@ public class Lonsdaleite implements ModInitializer {
         PERFECT_LONSDALEITE_OMNITOOL = registerItem("perfect_lonsdaleite_omnitool", new Perfect_Lonsdaleite_Omnitool(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 5, -2.8F, createToolSettings("perfect_lonsdaleite_omnitool", 20, 5, -2.8F)));
         
         // Register weapons
-        LONSDALEITE_SWORD = registerItem("lonsdaleite_sword", new Lonsdaleite_Sword(LonsdaleiteToolMaterials.LONSDALEITE, 6, -2.4F, createToolSettings("lonsdaleite_sword", 15, 6, -2.4F)));
-        PERFECT_LONSDALEITE_SWORD = registerItem("perfect_lonsdaleite_sword", new Perfect_Lonsdaleite_Sword(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 9, -2.3F, createToolSettings("perfect_lonsdaleite_sword", 20, 9, -2.3F)));
+        LONSDALEITE_SWORD = registerItem("lonsdaleite_sword", new Lonsdaleite_Sword(LonsdaleiteToolMaterials.LONSDALEITE, 6, -2.8F, createToolSettings("lonsdaleite_sword", 15, 6, -2.8F)));
+        PERFECT_LONSDALEITE_SWORD = registerItem("perfect_lonsdaleite_sword", new Perfect_Lonsdaleite_Sword(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 8, -2.7F, createToolSettings("perfect_lonsdaleite_sword", 20, 8, -2.7F)));
         LONSDALEITE_SHORT_SWORD = registerItem("lonsdaleite_short_sword", new Lonsdaleite_Short_Sword(LonsdaleiteToolMaterials.LONSDALEITE, 1, -0.7F, createToolSettings("lonsdaleite_short_sword", 15, 1, -0.7F)));
         PERFECT_LONSDALEITE_SHORT_SWORD = registerItem("perfect_lonsdaleite_short_sword", new Perfect_Lonsdaleite_Short_Sword(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 2, -0.4F, createToolSettings("perfect_lonsdaleite_short_sword", 20, 2, -0.4F)));
         LONSDALEITE_WAR_AXE = registerItem("lonsdaleite_war_axe", new Lonsdaleite_War_Axe(LonsdaleiteToolMaterials.LONSDALEITE, 9, -3.9F, createToolSettings("lonsdaleite_war_axe", 15, 9, -3.9F)));
