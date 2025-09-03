@@ -1,29 +1,26 @@
 package com.kestalkayden.lonsdaleite.materials;
 
-import com.kestalkayden.lonsdaleite.Lonsdaleite;
 import net.minecraft.item.ToolMaterial;
-import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.registry.tag.ItemTags;
 
 public class LonsdaleiteToolMaterials {
     
-    // ToolMaterial constructor: TagKey<Block>, int durability, float miningSpeed, float attackDamage, int enchantability, TagKey<Item> repairItems
+    // Copy from ToolMaterial.NETHERITE to inherit proper mining levels and block tags
     public static final ToolMaterial LONSDALEITE = new ToolMaterial(
-        BlockTags.INCORRECT_FOR_DIAMOND_TOOL,
-        1750,
+        ToolMaterial.NETHERITE.incorrectBlocksForDrops(),
+        2640, // 30% more durability than Netherite (2031)
         8.2F,
         3.0F,
         15,
-        ItemTags.DIAMOND_TOOL_MATERIALS // Using a placeholder - we'll need to create custom tags
+        ToolMaterial.NETHERITE.repairItems()
     );
     
     public static final ToolMaterial PERFECT_LONSDALEITE = new ToolMaterial(
-        BlockTags.INCORRECT_FOR_NETHERITE_TOOL,
-        2350,
+        ToolMaterial.NETHERITE.incorrectBlocksForDrops(),
+        2640,
         9.0F,
         4.0F,
         20,
-        ItemTags.NETHERITE_TOOL_MATERIALS // Using a placeholder - we'll need to create custom tags
+        ToolMaterial.NETHERITE.repairItems()
     );
     
     // Helper methods to get attack damage values for our custom materials

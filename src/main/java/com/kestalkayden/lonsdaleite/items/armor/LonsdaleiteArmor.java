@@ -22,7 +22,8 @@ public class LonsdaleiteArmor extends Item {
         super(settings
             .maxDamage(getDurabilityForType(material.value(), type))  // Set durability based on material and type
             .component(DataComponentTypes.ATTRIBUTE_MODIFIERS, createAttributeModifiers(material, type))
-            .component(DataComponentTypes.EQUIPPABLE, createEquippableComponent(material, type)));
+            .component(DataComponentTypes.EQUIPPABLE, createEquippableComponent(material, type))
+            .enchantable(getEnchantability(material)));
         this.material = material;
         this.equipmentType = type;
     }
@@ -101,5 +102,15 @@ public class LonsdaleiteArmor extends Item {
             case BOOTS -> baseDurability * 13;
             default -> baseDurability * 10;  // fallback
         };
+    }
+
+    private static int getEnchantability(RegistryEntry<ArmorMaterial> material) {
+        // Since we can't access enchantability() directly, get it from our materials class
+        if (material == com.kestalkayden.lonsdaleite.materials.LonsdaleiteArmorMaterials.LONSDALEITE_ENTRY) {
+            return 15;
+        } else if (material == com.kestalkayden.lonsdaleite.materials.LonsdaleiteArmorMaterials.PERFECT_LONSDALEITE_ENTRY) {
+            return 18;
+        }
+        return 15; // fallback
     }
 }

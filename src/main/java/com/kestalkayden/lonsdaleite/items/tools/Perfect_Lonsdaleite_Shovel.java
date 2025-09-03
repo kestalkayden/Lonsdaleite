@@ -1,18 +1,23 @@
 package com.kestalkayden.lonsdaleite.items.tools;
 
-import com.kestalkayden.lonsdaleite.materials.LonsdaleiteToolMaterials;
+import net.minecraft.block.BlockState;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 public class Perfect_Lonsdaleite_Shovel extends Item {
-    private final ToolMaterial material;
-
     public Perfect_Lonsdaleite_Shovel(ToolMaterial material, int attackDamage, float attackSpeed, Item.Settings settings) {
         super(settings);
-        this.material = material;
     }
 
-    public int getEnchantability() {
-        return LonsdaleiteToolMaterials.getEnchantability(this.material);
+    @Override
+    public boolean postMine(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity miner) {
+        if (!world.isClient && state.getHardness(world, pos) != 0.0F) {
+            stack.damage(1, miner, miner.getPreferredEquipmentSlot(stack));
+        }
+        return true;
     }
 }
