@@ -1,15 +1,53 @@
-# Lonsdaleite Mod for 1.20
+# Lonsdaleite Tools
 
-Lonsdaleite is a standalone mod for Minecraft 1.20 (Fabric). It adds Lonsdaleite tools and armor which are a tier above diamond. It's an alternative to Netherite. 
+A small expansion mod that adds **Lonsdaleite**, a tier above diamond — an alternative path to Netherite for players who'd rather skip the Nether. Crafting and repairing costs a hefty amount of diamond, so make good use of enchantments.
+
+## Requirements
+
+- Minecraft **26.1.x**
+- Java **25**
+- Fabric Loader **0.18.4+** with **Fabric API**, *or* NeoForge **26.1+**
 
 ## Downloads
 
-As a general warning, Remember to backup your world before installing new versions! Though really, it's a small mod and shouldn't break anything.
+- Modrinth: <https://modrinth.com/mod/lonsdaleite-tools>
+- CurseForge: <https://www.curseforge.com/minecraft/mc-mods/lonsdaleite>
 
-## Why this?
+Back up your world before installing new versions. It's a small mod and shouldn't break anything, but better safe than sorry.
 
-I created this as I do not particularly enjoy the nether (even with 1.16 nether update). This is a separate direction than Netherite and it requires a hefty price in Diamond to not only craft, but to repair as well. Be sure to make good use out of enchantments when utilizing these tools.
+## What's in it
+
+- **Material chain:** Raw → Prepared → Refined Gem → Perfect Gem.
+- **Tools (×2 tiers):** pickaxe, axe, shovel, hoe, omnitool.
+- **Weapons (×2 tiers):** sword, dagger, war axe.
+- **Armor (×2 tiers):** full helmet/chestplate/leggings/boots sets.
+
+Items appear in their own creative tab and are also injected into the vanilla Ingredients / Tools / Combat tabs near their Netherite counterparts.
+
+## Building
+
+```bash
+./gradlew buildAll
+```
+
+Produces:
+- `fabric/build/libs/lonsdaleite-fabric-<version>.jar`
+- `neoforge/build/libs/lonsdaleite-neoforge-<version>.jar`
+
+Individual loaders: `./gradlew :fabric:build` or `./gradlew :neoforge:build`.
+
+Dev clients: `./gradlew :fabric:runClient` or `./gradlew :neoforge:runClient`.
+
+## Repo layout
+
+```
+shared-resources/   assets, recipes, tags, lang — shared between both loaders
+fabric/             Fabric loader subproject
+neoforge/           NeoForge loader subproject
+```
+
+The Java source classes that don't touch loader-specific APIs (item/material implementations) live in both subprojects' `src/main/java/` and are byte-identical between them, since Minecraft 26.1 ships deobfuscated and uses Mojang's official names on both sides.
 
 ## License
 
-This template is available under the CC0 license.
+CC0-1.0.

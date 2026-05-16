@@ -24,6 +24,10 @@ bin/
 .classpath
 .project
 
-# fabric
+# fabric / neoforge
 
 run/
+
+# claude code harness state
+
+.claude/

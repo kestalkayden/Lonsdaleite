@@ -1,0 +1,29 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="CC0-1.0"
+issueTrackerURL="https://github.com/kestalkayden/Lonsdaleite/issues"
+
+[[mods]]
+modId="lonsdaleite"
+version="${version}"
+displayName="Lonsdaleite Tools"
+description='''
+Adds Lonsdaleite, a tier above diamond. An alternative material to Netherite for players who'd rather skip the Nether.
+'''
+authors="Kestalkayden"
+displayURL="https://github.com/kestalkayden/Lonsdaleite"
+logoFile="assets/lonsdaleite/icon.png"
+
+[[dependencies.lonsdaleite]]
+modId="neoforge"
+type="required"
+versionRange="[26.1,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.lonsdaleite]]
+modId="minecraft"
+type="required"
+versionRange="[26.1,26.2)"
+ordering="NONE"
+side="BOTH"
