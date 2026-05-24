@@ -2,13 +2,25 @@ package com.kestalkayden.lonsdaleite.materials;
 
 import java.util.Map;
 
+import com.kestalkayden.lonsdaleite.Lonsdaleite;
+
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.item.equipment.ArmorType;
+import net.minecraft.world.item.equipment.EquipmentAsset;
 import net.minecraft.world.item.equipment.EquipmentAssets;
 
 public class LonsdaleiteArmorMaterials {
+
+    public static final ResourceKey<EquipmentAsset> LONSDALEITE_ASSET = ResourceKey.create(
+        EquipmentAssets.ROOT_ID,
+        Identifier.fromNamespaceAndPath(Lonsdaleite.MOD_ID, "lonsdaleite"));
+
+    public static final ResourceKey<EquipmentAsset> PERFECT_LONSDALEITE_ASSET = ResourceKey.create(
+        EquipmentAssets.ROOT_ID,
+        Identifier.fromNamespaceAndPath(Lonsdaleite.MOD_ID, "perfect_lonsdaleite"));
 
     // ArmorMaterial(durability, defense map, enchantmentValue, equipSound, toughness, knockbackResistance, repairIngredient, assetId)
     public static final ArmorMaterial LONSDALEITE = new ArmorMaterial(
@@ -23,8 +35,8 @@ public class LonsdaleiteArmorMaterials {
         SoundEvents.ARMOR_EQUIP_DIAMOND,
         2.0F,
         0.0F,
-        ItemTags.REPAIRS_DIAMOND_ARMOR,
-        EquipmentAssets.DIAMOND
+        LonsdaleiteToolMaterials.REPAIRS_LONSDALEITE_TOOLS,
+        LONSDALEITE_ASSET
     );
 
     public static final ArmorMaterial PERFECT_LONSDALEITE = new ArmorMaterial(
@@ -39,7 +51,7 @@ public class LonsdaleiteArmorMaterials {
         SoundEvents.ARMOR_EQUIP_NETHERITE,
         3.0F,
         0.1F,
-        ItemTags.REPAIRS_NETHERITE_ARMOR,
-        EquipmentAssets.NETHERITE
+        LonsdaleiteToolMaterials.REPAIRS_PERFECT_LONSDALEITE_TOOLS,
+        PERFECT_LONSDALEITE_ASSET
     );
 }

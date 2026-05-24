@@ -1,0 +1,10 @@
+{
+  "layers": {
+    "humanoid": [
+      { "texture": "lonsdaleite:lonsdaleite" }
+    ],
+    "humanoid_leggings": [
+      { "texture": "lonsdaleite:lonsdaleite" }
+    ]
+  }
+}

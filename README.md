@@ -1,6 +1,6 @@
 # Lonsdaleite Tools
 
-A small expansion mod that adds **Lonsdaleite**, a tier above diamond — an alternative path to Netherite for players who'd rather skip the Nether. Crafting and repairing costs a hefty amount of diamond, so make good use of enchantments.
+A small expansion mod that adds **Lonsdaleite**, a tier above diamond — an alternative path to Netherite for players who'd rather skip the Nether. Crafting costs a hefty amount of diamond (via the gem chain), and repairs eat more of the gem itself, so make good use of enchantments.
 
 ## Requirements
 
