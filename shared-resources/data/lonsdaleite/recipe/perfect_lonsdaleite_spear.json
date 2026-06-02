@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " E ",
+        " # ",
+        " # "
+    ],
+    "key": {
+        "E": "lonsdaleite:perfect_lonsdaleite",
+        "#": "minecraft:stick"
+    },
+    "result": {
+        "id": "lonsdaleite:perfect_lonsdaleite_spear",
+        "count": 1
+    }
+  }

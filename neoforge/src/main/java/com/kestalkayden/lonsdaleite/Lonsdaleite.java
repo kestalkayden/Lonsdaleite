@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import com.kestalkayden.lonsdaleite.items.armor.LonsdaleiteArmor;
 import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Axe;
 import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Hoe;
+import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Mace;
 import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Omnitool;
 import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Pickaxe;
 import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Short_Sword;
@@ -25,6 +26,7 @@ import com.kestalkayden.lonsdaleite.items.tools.Perfect_Lonsdaleite_War_Axe;
 import com.kestalkayden.lonsdaleite.materials.LonsdaleiteArmorMaterials;
 import com.kestalkayden.lonsdaleite.materials.LonsdaleiteToolMaterials;
 
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -32,6 +34,9 @@ import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.MaceItem;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.component.Weapon;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -73,6 +78,13 @@ public class Lonsdaleite {
     public static final DeferredItem<Lonsdaleite_War_Axe>           LONSDALEITE_WAR_AXE           = ITEMS.registerItem("lonsdaleite_war_axe",           p -> new Lonsdaleite_War_Axe(LonsdaleiteToolMaterials.LONSDALEITE, 9, -3.9F, p.sword(LonsdaleiteToolMaterials.LONSDALEITE, 9, -3.9F).enchantable(15)));
     public static final DeferredItem<Perfect_Lonsdaleite_War_Axe>   PERFECT_LONSDALEITE_WAR_AXE   = ITEMS.registerItem("perfect_lonsdaleite_war_axe",   p -> new Perfect_Lonsdaleite_War_Axe(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 13, -3.7F, p.sword(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 13, -3.7F).enchantable(20)));
 
+    // Spears — plain Item; spear() sets durability/repair/enchant from the material + kinetic & piercing components
+    public static final DeferredItem<Item> LONSDALEITE_SPEAR         = ITEMS.registerItem("lonsdaleite_spear",         p -> new Item(p.spear(LonsdaleiteToolMaterials.LONSDALEITE, 1.15F, 1.25F, 0.4F, 2.5F, 9.0F, 5.5F, 5.1F, 8.75F, 4.6F)));
+    public static final DeferredItem<Item> PERFECT_LONSDALEITE_SPEAR = ITEMS.registerItem("perfect_lonsdaleite_spear", p -> new Item(p.spear(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 1.15F, 1.35F, 0.4F, 2.5F, 9.0F, 5.5F, 5.1F, 8.75F, 4.6F)));
+
+    // Mace — Lonsdaleite_Mace (vanilla smash attack); stronger melee (+7 base vs vanilla +5), gem-tier durability, breeze-rod handle, repairs with Perfect gems
+    public static final DeferredItem<Lonsdaleite_Mace> LONSDALEITE_MACE = ITEMS.registerItem("lonsdaleite_mace",          p -> new Lonsdaleite_Mace(p.rarity(Rarity.EPIC).durability(2640).component(DataComponents.TOOL, MaceItem.createToolProperties()).repairable(LonsdaleiteToolMaterials.REPAIRS_PERFECT_LONSDALEITE_TOOLS).attributes(Lonsdaleite_Mace.createAttributes()).enchantable(20).component(DataComponents.WEAPON, new Weapon(1))));
+
     // Armor
     public static final DeferredItem<LonsdaleiteArmor> LONSDALEITE_HELMET             = ITEMS.registerItem("lonsdaleite_helmet",             p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.LONSDALEITE, ArmorType.HELMET, p));
     public static final DeferredItem<LonsdaleiteArmor> LONSDALEITE_CHESTPLATE         = ITEMS.registerItem("lonsdaleite_chestplate",         p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.LONSDALEITE, ArmorType.CHESTPLATE, p));
@@ -109,6 +121,9 @@ public class Lonsdaleite {
                 entries.accept(PERFECT_LONSDALEITE_SWORD.get());
                 entries.accept(LONSDALEITE_WAR_AXE.get());
                 entries.accept(PERFECT_LONSDALEITE_WAR_AXE.get());
+                entries.accept(LONSDALEITE_SPEAR.get());
+                entries.accept(PERFECT_LONSDALEITE_SPEAR.get());
+                entries.accept(LONSDALEITE_MACE.get());
                 entries.accept(LONSDALEITE_HELMET.get());
                 entries.accept(LONSDALEITE_CHESTPLATE.get());
                 entries.accept(LONSDALEITE_LEGGINGS.get());
@@ -151,7 +166,9 @@ public class Lonsdaleite {
             for (DeferredItem<? extends Item> entry : new DeferredItem[] {
                 LONSDALEITE_SHORT_SWORD, PERFECT_LONSDALEITE_SHORT_SWORD,
                 LONSDALEITE_SWORD,       PERFECT_LONSDALEITE_SWORD,
-                LONSDALEITE_WAR_AXE,     PERFECT_LONSDALEITE_WAR_AXE
+                LONSDALEITE_WAR_AXE,     PERFECT_LONSDALEITE_WAR_AXE,
+                LONSDALEITE_SPEAR,       PERFECT_LONSDALEITE_SPEAR,
+                LONSDALEITE_MACE
             }) {
                 ItemStack stack = new ItemStack(entry.get());
                 event.insertAfter(anchor, stack, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);

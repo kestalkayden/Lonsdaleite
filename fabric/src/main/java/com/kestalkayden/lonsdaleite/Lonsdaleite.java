@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import com.kestalkayden.lonsdaleite.items.armor.LonsdaleiteArmor;
 import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Axe;
 import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Hoe;
+import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Mace;
 import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Omnitool;
 import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Pickaxe;
 import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Short_Sword;
@@ -29,6 +30,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 import net.minecraft.core.Registry;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -39,6 +41,9 @@ import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.MaceItem;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.component.Weapon;
 import net.minecraft.world.item.equipment.ArmorType;
 
 public class Lonsdaleite implements ModInitializer {
@@ -70,6 +75,13 @@ public class Lonsdaleite implements ModInitializer {
     public static Item PERFECT_LONSDALEITE_SHORT_SWORD;
     public static Item LONSDALEITE_WAR_AXE;
     public static Item PERFECT_LONSDALEITE_WAR_AXE;
+
+    // Spears
+    public static Item LONSDALEITE_SPEAR;
+    public static Item PERFECT_LONSDALEITE_SPEAR;
+
+    // Mace
+    public static Item LONSDALEITE_MACE;
 
     // Armor
     public static Item LONSDALEITE_HELMET;
@@ -152,6 +164,22 @@ public class Lonsdaleite implements ModInitializer {
             new Perfect_Lonsdaleite_War_Axe(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 13, -3.7F,
                 p.sword(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 13, -3.7F).enchantable(20)));
 
+        // Spears — plain Item; spear() sets durability/repair/enchant from the material + kinetic & piercing components
+        LONSDALEITE_SPEAR = register("lonsdaleite_spear", p ->
+            new Item(p.spear(LonsdaleiteToolMaterials.LONSDALEITE, 1.15F, 1.25F, 0.4F, 2.5F, 9.0F, 5.5F, 5.1F, 8.75F, 4.6F)));
+        PERFECT_LONSDALEITE_SPEAR = register("perfect_lonsdaleite_spear", p ->
+            new Item(p.spear(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 1.15F, 1.35F, 0.4F, 2.5F, 9.0F, 5.5F, 5.1F, 8.75F, 4.6F)));
+
+        // Mace — Lonsdaleite_Mace (vanilla smash attack); stronger melee (+7 base vs vanilla +5), gem-tier durability, breeze-rod handle, repairs with Perfect gems
+        LONSDALEITE_MACE = register("lonsdaleite_mace", p ->
+            new Lonsdaleite_Mace(p.rarity(Rarity.EPIC)
+                .durability(2640)
+                .component(DataComponents.TOOL, MaceItem.createToolProperties())
+                .repairable(LonsdaleiteToolMaterials.REPAIRS_PERFECT_LONSDALEITE_TOOLS)
+                .attributes(Lonsdaleite_Mace.createAttributes())
+                .enchantable(20)
+                .component(DataComponents.WEAPON, new Weapon(1))));
+
         // Armor — use Item.Properties.humanoidArmor helper
         LONSDALEITE_HELMET     = register("lonsdaleite_helmet",     p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.LONSDALEITE, ArmorType.HELMET, p));
         LONSDALEITE_CHESTPLATE = register("lonsdaleite_chestplate", p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.LONSDALEITE, ArmorType.CHESTPLATE, p));
@@ -193,6 +221,10 @@ public class Lonsdaleite implements ModInitializer {
                     entries.accept(PERFECT_LONSDALEITE_SWORD);
                     entries.accept(LONSDALEITE_WAR_AXE);
                     entries.accept(PERFECT_LONSDALEITE_WAR_AXE);
+
+                    entries.accept(LONSDALEITE_SPEAR);
+                    entries.accept(PERFECT_LONSDALEITE_SPEAR);
+                    entries.accept(LONSDALEITE_MACE);
 
                     entries.accept(LONSDALEITE_HELMET);
                     entries.accept(LONSDALEITE_CHESTPLATE);
@@ -237,7 +269,10 @@ public class Lonsdaleite implements ModInitializer {
                 new ItemStack(LONSDALEITE_SWORD),
                 new ItemStack(PERFECT_LONSDALEITE_SWORD),
                 new ItemStack(LONSDALEITE_WAR_AXE),
-                new ItemStack(PERFECT_LONSDALEITE_WAR_AXE));
+                new ItemStack(PERFECT_LONSDALEITE_WAR_AXE),
+                new ItemStack(LONSDALEITE_SPEAR),
+                new ItemStack(PERFECT_LONSDALEITE_SPEAR),
+                new ItemStack(LONSDALEITE_MACE));
             output.insertAfter(Items.NETHERITE_BOOTS,
                 new ItemStack(LONSDALEITE_HELMET),
                 new ItemStack(LONSDALEITE_CHESTPLATE),

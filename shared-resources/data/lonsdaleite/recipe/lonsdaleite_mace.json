@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " E ",
+        "EEE",
+        " # "
+    ],
+    "key": {
+        "E": "lonsdaleite:perfect_lonsdaleite",
+        "#": "minecraft:breeze_rod"
+    },
+    "result": {
+        "id": "lonsdaleite:lonsdaleite_mace",
+        "count": 1
+    }
+  }
