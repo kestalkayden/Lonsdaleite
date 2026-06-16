@@ -12,7 +12,7 @@ neoForge {
     // classpath. This module ships nothing; it's a platform-agnostic purity check that fails the
     // build if shared code accidentally imports a Fabric/NeoForge class. The real jars come from
     // :fabric and :neoforge, which pull these same sources in via sourceSets srcDir.
-    neoFormVersion = "26.1.2-1"
+    neoFormVersion = "26.2-rc-2-1"
     validateAccessTransformers = false
 }
 
