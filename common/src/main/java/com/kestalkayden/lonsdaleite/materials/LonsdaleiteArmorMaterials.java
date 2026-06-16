@@ -2,7 +2,7 @@ package com.kestalkayden.lonsdaleite.materials;
 
 import java.util.Map;
 
-import com.kestalkayden.lonsdaleite.Lonsdaleite;
+import com.kestalkayden.lonsdaleite.LonsdaleiteCommon;
 
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
@@ -16,11 +16,11 @@ public class LonsdaleiteArmorMaterials {
 
     public static final ResourceKey<EquipmentAsset> LONSDALEITE_ASSET = ResourceKey.create(
         EquipmentAssets.ROOT_ID,
-        Identifier.fromNamespaceAndPath(Lonsdaleite.MOD_ID, "lonsdaleite"));
+        Identifier.fromNamespaceAndPath(LonsdaleiteCommon.MOD_ID, "lonsdaleite"));
 
     public static final ResourceKey<EquipmentAsset> PERFECT_LONSDALEITE_ASSET = ResourceKey.create(
         EquipmentAssets.ROOT_ID,
-        Identifier.fromNamespaceAndPath(Lonsdaleite.MOD_ID, "perfect_lonsdaleite"));
+        Identifier.fromNamespaceAndPath(LonsdaleiteCommon.MOD_ID, "perfect_lonsdaleite"));
 
     // ArmorMaterial(durability, defense map, enchantmentValue, equipSound, toughness, knockbackResistance, repairIngredient, assetId)
     public static final ArmorMaterial LONSDALEITE = new ArmorMaterial(

@@ -1,0 +1,21 @@
+plugins {
+    id 'net.neoforged.moddev' version "${moddev_version}"
+}
+
+base {
+    archivesName = "${project.archives_base_name}-common"
+}
+
+neoForge {
+    // Vanilla-mode: compile the shared code against NeoForm-provided Minecraft (official Mojang
+    // names — the same names both Loom and NeoForge see in 26.1) with NO loader code on the
+    // classpath. This module ships nothing; it's a platform-agnostic purity check that fails the
+    // build if shared code accidentally imports a Fabric/NeoForge class. The real jars come from
+    // :fabric and :neoforge, which pull these same sources in via sourceSets srcDir.
+    neoFormVersion = "26.1.2-1"
+    validateAccessTransformers = false
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.release = 25
+}

@@ -7,6 +7,11 @@ base {
     archivesName = "${project.archives_base_name}-fabric"
 }
 
+// Compile the shared :common sources into this jar against Loom's Minecraft view. The standalone
+// :common module additionally compiles them against vanilla NeoForm as a platform-agnostic purity
+// check. Assets/data stay in shared-resources.
+sourceSets.main.java.srcDir "${rootProject.projectDir}/common/src/main/java"
+
 dependencies {
     minecraft "com.mojang:minecraft:${minecraft_version}"
     // No `mappings` line — Minecraft 26.1 is deobfuscated and ships Mojang's official names.

@@ -108,7 +108,8 @@ jobs:
           distribution: 'temurin'
       - uses: gradle/actions/wrapper-validation@v6
       - run: chmod +x ./gradlew
-      - run: ./gradlew :neoforge:build --stacktrace
+      # :common:build is the platform-agnostic purity gate (rides with the NeoForge toolchain).
+      - run: ./gradlew :neoforge:build :common:build --stacktrace
       - uses: actions/upload-artifact@v7
         with:
           name: neoforge-jars
