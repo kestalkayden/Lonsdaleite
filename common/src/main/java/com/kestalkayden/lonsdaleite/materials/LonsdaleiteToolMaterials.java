@@ -20,7 +20,7 @@ public class LonsdaleiteToolMaterials {
 
     public static final ToolMaterial LONSDALEITE = new ToolMaterial(
         ToolMaterial.NETHERITE.incorrectBlocksForDrops(),
-        2640,
+        2800,
         8.2F,
         3.0F,
         15,
@@ -29,7 +29,7 @@ public class LonsdaleiteToolMaterials {
 
     public static final ToolMaterial PERFECT_LONSDALEITE = new ToolMaterial(
         ToolMaterial.NETHERITE.incorrectBlocksForDrops(),
-        2640,
+        3800,
         9.0F,
         4.0F,
         20,
