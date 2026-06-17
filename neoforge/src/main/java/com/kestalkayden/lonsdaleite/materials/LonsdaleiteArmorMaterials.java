@@ -24,7 +24,7 @@ public class LonsdaleiteArmorMaterials {
 
     // ArmorMaterial(durability, defense map, enchantmentValue, equipSound, toughness, knockbackResistance, repairIngredient, assetId)
     public static final ArmorMaterial LONSDALEITE = new ArmorMaterial(
-        37,
+        44,
         Map.of(
             ArmorType.HELMET, 3,
             ArmorType.CHESTPLATE, 8,
@@ -40,7 +40,7 @@ public class LonsdaleiteArmorMaterials {
     );
 
     public static final ArmorMaterial PERFECT_LONSDALEITE = new ArmorMaterial(
-        43,
+        60,
         Map.of(
             ArmorType.HELMET, 3,
             ArmorType.CHESTPLATE, 8,
