@@ -6,21 +6,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.kestalkayden.lonsdaleite.items.armor.LonsdaleiteArmor;
-import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Axe;
-import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Hoe;
 import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Mace;
 import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Omnitool;
 import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Pickaxe;
 import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Short_Sword;
-import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Shovel;
 import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Sword;
 import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_War_Axe;
-import com.kestalkayden.lonsdaleite.items.tools.Perfect_Lonsdaleite_Axe;
-import com.kestalkayden.lonsdaleite.items.tools.Perfect_Lonsdaleite_Hoe;
-import com.kestalkayden.lonsdaleite.items.tools.Perfect_Lonsdaleite_Omnitool;
 import com.kestalkayden.lonsdaleite.items.tools.Perfect_Lonsdaleite_Pickaxe;
 import com.kestalkayden.lonsdaleite.items.tools.Perfect_Lonsdaleite_Short_Sword;
-import com.kestalkayden.lonsdaleite.items.tools.Perfect_Lonsdaleite_Shovel;
 import com.kestalkayden.lonsdaleite.items.tools.Perfect_Lonsdaleite_Sword;
 import com.kestalkayden.lonsdaleite.items.tools.Perfect_Lonsdaleite_War_Axe;
 import com.kestalkayden.lonsdaleite.materials.LonsdaleiteArmorMaterials;
@@ -36,13 +29,16 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.MaceItem;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.component.Weapon;
 import net.minecraft.world.item.equipment.ArmorType;
 
@@ -120,28 +116,22 @@ public class Lonsdaleite implements ModInitializer {
             new Perfect_Lonsdaleite_Pickaxe(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 7, -2.7F,
                 p.pickaxe(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 7, -2.7F).enchantable(20)));
         LONSDALEITE_AXE = register("lonsdaleite_axe", p ->
-            new Lonsdaleite_Axe(LonsdaleiteToolMaterials.LONSDALEITE, 8, -3.0F,
-                p.axe(LonsdaleiteToolMaterials.LONSDALEITE, 8, -3.0F).enchantable(15)));
+            new AxeItem(LonsdaleiteToolMaterials.LONSDALEITE, 8, -3.0F, p));
         PERFECT_LONSDALEITE_AXE = register("perfect_lonsdaleite_axe", p ->
-            new Perfect_Lonsdaleite_Axe(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 11, -2.9F,
-                p.axe(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 11, -2.9F).enchantable(20)));
+            new AxeItem(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 11, -2.9F, p));
         LONSDALEITE_SHOVEL = register("lonsdaleite_shovel", p ->
-            new Lonsdaleite_Shovel(LonsdaleiteToolMaterials.LONSDALEITE, 4, -3.0F,
-                p.shovel(LonsdaleiteToolMaterials.LONSDALEITE, 4, -3.0F).enchantable(15)));
+            new ShovelItem(LonsdaleiteToolMaterials.LONSDALEITE, 4, -3.0F, p));
         PERFECT_LONSDALEITE_SHOVEL = register("perfect_lonsdaleite_shovel", p ->
-            new Perfect_Lonsdaleite_Shovel(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 6, -2.9F,
-                p.shovel(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 6, -2.9F).enchantable(20)));
+            new ShovelItem(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 6, -2.9F, p));
         LONSDALEITE_HOE = register("lonsdaleite_hoe", p ->
-            new Lonsdaleite_Hoe(LonsdaleiteToolMaterials.LONSDALEITE, 2, 0.0F,
-                p.hoe(LonsdaleiteToolMaterials.LONSDALEITE, 2, 0.0F).enchantable(15)));
+            new HoeItem(LonsdaleiteToolMaterials.LONSDALEITE, 2, 0.0F, p));
         PERFECT_LONSDALEITE_HOE = register("perfect_lonsdaleite_hoe", p ->
-            new Perfect_Lonsdaleite_Hoe(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 3, 0.2F,
-                p.hoe(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 3, 0.2F).enchantable(20)));
+            new HoeItem(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 3, 0.2F, p));
         LONSDALEITE_OMNITOOL = register("lonsdaleite_omnitool", p ->
             new Lonsdaleite_Omnitool(LonsdaleiteToolMaterials.LONSDALEITE, 3, -2.9F,
                 p.pickaxe(LonsdaleiteToolMaterials.LONSDALEITE, 3, -2.9F).enchantable(15)));
         PERFECT_LONSDALEITE_OMNITOOL = register("perfect_lonsdaleite_omnitool", p ->
-            new Perfect_Lonsdaleite_Omnitool(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 5, -2.8F,
+            new Lonsdaleite_Omnitool(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 5, -2.8F,
                 p.pickaxe(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 5, -2.8F).enchantable(20)));
 
         // Weapons — use Item.Properties.sword helper
