@@ -158,11 +158,11 @@ public class Lonsdaleite implements ModInitializer {
             new Perfect_Lonsdaleite_Short_Sword(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 2, -0.4F,
                 p.sword(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 2, -0.4F).enchantable(20)));
         LONSDALEITE_WAR_AXE = register("lonsdaleite_war_axe", p ->
-            new Lonsdaleite_War_Axe(LonsdaleiteToolMaterials.LONSDALEITE, 9, -3.9F,
-                p.sword(LonsdaleiteToolMaterials.LONSDALEITE, 9, -3.9F).enchantable(15)));
+            new Lonsdaleite_War_Axe(LonsdaleiteToolMaterials.LONSDALEITE, 12, -3.6F,
+                p.sword(LonsdaleiteToolMaterials.LONSDALEITE, 12, -3.6F).enchantable(15)));
         PERFECT_LONSDALEITE_WAR_AXE = register("perfect_lonsdaleite_war_axe", p ->
-            new Perfect_Lonsdaleite_War_Axe(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 13, -3.7F,
-                p.sword(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 13, -3.7F).enchantable(20)));
+            new Perfect_Lonsdaleite_War_Axe(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 15, -3.5F,
+                p.sword(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 15, -3.5F).enchantable(20)));
 
         // Spears — plain Item; spear() sets durability/repair/enchant from the material + kinetic & piercing components
         LONSDALEITE_SPEAR = register("lonsdaleite_spear", p ->
