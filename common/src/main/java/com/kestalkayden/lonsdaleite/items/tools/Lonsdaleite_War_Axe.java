@@ -1,17 +1,14 @@
 package com.kestalkayden.lonsdaleite.items.tools;
 
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.ToolMaterial;
 
-public class Lonsdaleite_War_Axe extends Item {
+// 1.21.4: SwordItem still exists as a concrete class (removed in 1.21.5), so the custom
+// weapons extend it directly; it supplies attack attributes + durability-on-hit from the
+// material, replacing the 1.21.5+ Properties.sword() helper.
+public class Lonsdaleite_War_Axe extends SwordItem {
     public Lonsdaleite_War_Axe(ToolMaterial material, int attackDamage, float attackSpeed, Item.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    public void hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        stack.hurtAndBreak(1, attacker, attacker.getEquipmentSlotForItem(stack));
+        super(material, attackDamage, attackSpeed, properties);
     }
 }

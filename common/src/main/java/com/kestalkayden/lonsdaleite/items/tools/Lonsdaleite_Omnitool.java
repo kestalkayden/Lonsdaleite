@@ -6,6 +6,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.block.state.BlockState;
@@ -17,11 +18,13 @@ import net.minecraft.world.level.block.state.BlockState;
  * at registration, and mining durability loss is handled by the base {@code Item.mineBlock} via the
  * Tool component's {@code damagePerBlock}, so no override is needed here.
  */
-public class Lonsdaleite_Omnitool extends Item {
+public class Lonsdaleite_Omnitool extends PickaxeItem {
     private final ToolMaterial material;
 
     public Lonsdaleite_Omnitool(ToolMaterial material, int attackDamage, float attackSpeed, Item.Properties properties) {
-        super(properties);
+        // 1.21.4: PickaxeItem base supplies attack stats + durability from the material
+        // (no .pickaxe() Properties helper here); the overrides below widen it to an omnitool.
+        super(material, attackDamage, attackSpeed, properties);
         this.material = material;
     }
 

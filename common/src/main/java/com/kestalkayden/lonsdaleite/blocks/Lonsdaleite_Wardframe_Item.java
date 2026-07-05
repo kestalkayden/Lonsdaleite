@@ -1,6 +1,6 @@
 package com.kestalkayden.lonsdaleite.blocks;
 
-import java.util.function.Consumer;
+import java.util.List;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -8,7 +8,6 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.block.Block;
 
 /**
@@ -24,10 +23,10 @@ public class Lonsdaleite_Wardframe_Item extends BlockItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, Item.TooltipContext context, TooltipDisplay display,
-                                Consumer<Component> output, TooltipFlag flag) {
-        super.appendHoverText(stack, context, display, output, flag);
-        output.accept(Component.translatable("block.lonsdaleite.lonsdaleite_wardframe.tooltip.pass").withStyle(ChatFormatting.GRAY));
-        output.accept(Component.translatable("block.lonsdaleite.lonsdaleite_wardframe.tooltip.merge").withStyle(ChatFormatting.GRAY));
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context,
+                                List<Component> tooltipComponents, TooltipFlag flag) {
+        super.appendHoverText(stack, context, tooltipComponents, flag);
+        tooltipComponents.add(Component.translatable("block.lonsdaleite.lonsdaleite_wardframe.tooltip.pass").withStyle(ChatFormatting.GRAY));
+        tooltipComponents.add(Component.translatable("block.lonsdaleite.lonsdaleite_wardframe.tooltip.merge").withStyle(ChatFormatting.GRAY));
     }
 }

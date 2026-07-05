@@ -41,7 +41,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.MaceItem;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.ShovelItem;
-import net.minecraft.world.item.component.Weapon;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
@@ -134,10 +133,10 @@ public class Lonsdaleite implements ModInitializer {
         // Mining tools — use Item.Properties.pickaxe/axe/shovel/hoe helpers
         LONSDALEITE_PICKAXE = register("lonsdaleite_pickaxe", p ->
             new Lonsdaleite_Pickaxe(LonsdaleiteToolMaterials.LONSDALEITE, 5, -2.8F,
-                p.pickaxe(LonsdaleiteToolMaterials.LONSDALEITE, 5, -2.8F).enchantable(15)));
+                p.enchantable(15)));
         PERFECT_LONSDALEITE_PICKAXE = register("perfect_lonsdaleite_pickaxe", p ->
             new Perfect_Lonsdaleite_Pickaxe(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 7, -2.7F,
-                p.pickaxe(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 7, -2.7F).enchantable(20)));
+                p.enchantable(20)));
         LONSDALEITE_AXE = register("lonsdaleite_axe", p ->
             new AxeItem(LonsdaleiteToolMaterials.LONSDALEITE, 8, -3.0F, p));
         PERFECT_LONSDALEITE_AXE = register("perfect_lonsdaleite_axe", p ->
@@ -152,30 +151,30 @@ public class Lonsdaleite implements ModInitializer {
             new HoeItem(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 3, 0.2F, p));
         LONSDALEITE_OMNITOOL = register("lonsdaleite_omnitool", p ->
             new Lonsdaleite_Omnitool(LonsdaleiteToolMaterials.LONSDALEITE, 3, -2.9F,
-                p.pickaxe(LonsdaleiteToolMaterials.LONSDALEITE, 3, -2.9F).enchantable(15)));
+                p.enchantable(15)));
         PERFECT_LONSDALEITE_OMNITOOL = register("perfect_lonsdaleite_omnitool", p ->
             new Lonsdaleite_Omnitool(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 5, -2.8F,
-                p.pickaxe(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 5, -2.8F).enchantable(20)));
+                p.enchantable(20)));
 
         // Weapons — use Item.Properties.sword helper
         LONSDALEITE_SWORD = register("lonsdaleite_sword", p ->
             new Lonsdaleite_Sword(LonsdaleiteToolMaterials.LONSDALEITE, 6, -2.8F,
-                p.sword(LonsdaleiteToolMaterials.LONSDALEITE, 6, -2.8F).enchantable(15)));
+                p.enchantable(15)));
         PERFECT_LONSDALEITE_SWORD = register("perfect_lonsdaleite_sword", p ->
             new Perfect_Lonsdaleite_Sword(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 8, -2.7F,
-                p.sword(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 8, -2.7F).enchantable(20)));
+                p.enchantable(20)));
         LONSDALEITE_SHORT_SWORD = register("lonsdaleite_short_sword", p ->
             new Lonsdaleite_Short_Sword(LonsdaleiteToolMaterials.LONSDALEITE, 1, -0.7F,
-                p.sword(LonsdaleiteToolMaterials.LONSDALEITE, 1, -0.7F).enchantable(15)));
+                p.enchantable(15)));
         PERFECT_LONSDALEITE_SHORT_SWORD = register("perfect_lonsdaleite_short_sword", p ->
             new Perfect_Lonsdaleite_Short_Sword(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 2, -0.4F,
-                p.sword(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 2, -0.4F).enchantable(20)));
+                p.enchantable(20)));
         LONSDALEITE_WAR_AXE = register("lonsdaleite_war_axe", p ->
             new Lonsdaleite_War_Axe(LonsdaleiteToolMaterials.LONSDALEITE, 12, -3.6F,
-                p.sword(LonsdaleiteToolMaterials.LONSDALEITE, 12, -3.6F).enchantable(15)));
+                p.enchantable(15)));
         PERFECT_LONSDALEITE_WAR_AXE = register("perfect_lonsdaleite_war_axe", p ->
             new Perfect_Lonsdaleite_War_Axe(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 15, -3.5F,
-                p.sword(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 15, -3.5F).enchantable(20)));
+                p.enchantable(20)));
 
         // Mace — Lonsdaleite_Mace (vanilla smash attack); stronger melee (+7 base vs vanilla +5), gem-tier durability, breeze-rod handle, repairs with Perfect gems
         LONSDALEITE_MACE = register("lonsdaleite_mace", p ->
@@ -184,8 +183,7 @@ public class Lonsdaleite implements ModInitializer {
                 .component(DataComponents.TOOL, MaceItem.createToolProperties())
                 .repairable(LonsdaleiteToolMaterials.REPAIRS_PERFECT_LONSDALEITE_TOOLS)
                 .attributes(Lonsdaleite_Mace.createAttributes())
-                .enchantable(20)
-                .component(DataComponents.WEAPON, new Weapon(1))));
+                .enchantable(20)));
 
         // Armor — use Item.Properties.humanoidArmor helper
         LONSDALEITE_HELMET     = register("lonsdaleite_helmet",     p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.LONSDALEITE, ArmorType.HELMET, p));

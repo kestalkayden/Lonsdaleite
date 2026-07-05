@@ -6,6 +6,8 @@ import net.minecraft.world.item.equipment.ArmorType;
 
 public class LonsdaleiteArmor extends Item {
     public LonsdaleiteArmor(ArmorMaterial material, ArmorType type, Item.Properties properties) {
-        super(properties.humanoidArmor(material, type));
+        // 1.21.4: no Properties.humanoidArmor() helper; ArmorMaterial.humanoidProperties builds
+        // the equippable properties instead.
+        super(material.humanoidProperties(properties, type));
     }
 }
