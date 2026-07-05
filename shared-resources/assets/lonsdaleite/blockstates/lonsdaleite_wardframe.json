@@ -1,0 +1,17 @@
+{
+  "multipart": [
+    { "when": { "down":  "false", "north": "false" }, "apply": { "model": "lonsdaleite:block/lonsdaleite_wardframe_edge_h" } },
+    { "when": { "down":  "false", "east":  "false" }, "apply": { "model": "lonsdaleite:block/lonsdaleite_wardframe_edge_h", "y": 90  } },
+    { "when": { "down":  "false", "south": "false" }, "apply": { "model": "lonsdaleite:block/lonsdaleite_wardframe_edge_h", "y": 180 } },
+    { "when": { "down":  "false", "west":  "false" }, "apply": { "model": "lonsdaleite:block/lonsdaleite_wardframe_edge_h", "y": 270 } },
+    { "when": { "up":    "false", "south": "false" }, "apply": { "model": "lonsdaleite:block/lonsdaleite_wardframe_edge_h", "x": 180 } },
+    { "when": { "up":    "false", "west":  "false" }, "apply": { "model": "lonsdaleite:block/lonsdaleite_wardframe_edge_h", "x": 180, "y": 90  } },
+    { "when": { "up":    "false", "north": "false" }, "apply": { "model": "lonsdaleite:block/lonsdaleite_wardframe_edge_h", "x": 180, "y": 180 } },
+    { "when": { "up":    "false", "east":  "false" }, "apply": { "model": "lonsdaleite:block/lonsdaleite_wardframe_edge_h", "x": 180, "y": 270 } },
+
+    { "when": { "north": "false", "west":  "false" }, "apply": { "model": "lonsdaleite:block/lonsdaleite_wardframe_edge_v" } },
+    { "when": { "north": "false", "east":  "false" }, "apply": { "model": "lonsdaleite:block/lonsdaleite_wardframe_edge_v", "y": 90  } },
+    { "when": { "south": "false", "east":  "false" }, "apply": { "model": "lonsdaleite:block/lonsdaleite_wardframe_edge_v", "y": 180 } },
+    { "when": { "south": "false", "west":  "false" }, "apply": { "model": "lonsdaleite:block/lonsdaleite_wardframe_edge_v", "y": 270 } }
+  ]
+}

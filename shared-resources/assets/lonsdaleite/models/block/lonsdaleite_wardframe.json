@@ -1,0 +1,24 @@
+{
+  "parent": "minecraft:block/block",
+  "__comment": "Inventory/hand model only - placed blocks assemble from the edge_h/edge_v multipart pieces.",
+  "textures": {
+    "particle": "lonsdaleite:block/lonsdaleite_wardframe",
+    "crystal":  "lonsdaleite:block/lonsdaleite_wardframe"
+  },
+  "elements": [
+    { "from": [0, 0, 0],       "to": [1.5, 16, 1.5],   "faces": { "north": {"texture": "#crystal"}, "south": {"texture": "#crystal"}, "east": {"texture": "#crystal"}, "west": {"texture": "#crystal"}, "up": {"texture": "#crystal"}, "down": {"texture": "#crystal"} } },
+    { "from": [14.5, 0, 0],    "to": [16, 16, 1.5],    "faces": { "north": {"texture": "#crystal"}, "south": {"texture": "#crystal"}, "east": {"texture": "#crystal"}, "west": {"texture": "#crystal"}, "up": {"texture": "#crystal"}, "down": {"texture": "#crystal"} } },
+    { "from": [0, 0, 14.5],    "to": [1.5, 16, 16],    "faces": { "north": {"texture": "#crystal"}, "south": {"texture": "#crystal"}, "east": {"texture": "#crystal"}, "west": {"texture": "#crystal"}, "up": {"texture": "#crystal"}, "down": {"texture": "#crystal"} } },
+    { "from": [14.5, 0, 14.5], "to": [16, 16, 16],     "faces": { "north": {"texture": "#crystal"}, "south": {"texture": "#crystal"}, "east": {"texture": "#crystal"}, "west": {"texture": "#crystal"}, "up": {"texture": "#crystal"}, "down": {"texture": "#crystal"} } },
+
+    { "from": [1.5, 0, 0],     "to": [14.5, 1.5, 1.5], "faces": { "north": {"texture": "#crystal"}, "south": {"texture": "#crystal"}, "up": {"texture": "#crystal"}, "down": {"texture": "#crystal"} } },
+    { "from": [1.5, 0, 14.5],  "to": [14.5, 1.5, 16],  "faces": { "north": {"texture": "#crystal"}, "south": {"texture": "#crystal"}, "up": {"texture": "#crystal"}, "down": {"texture": "#crystal"} } },
+    { "from": [0, 0, 1.5],     "to": [1.5, 1.5, 14.5], "faces": { "east": {"texture": "#crystal"}, "west": {"texture": "#crystal"}, "up": {"texture": "#crystal"}, "down": {"texture": "#crystal"} } },
+    { "from": [14.5, 0, 1.5],  "to": [16, 1.5, 14.5],  "faces": { "east": {"texture": "#crystal"}, "west": {"texture": "#crystal"}, "up": {"texture": "#crystal"}, "down": {"texture": "#crystal"} } },
+
+    { "from": [1.5, 14.5, 0],    "to": [14.5, 16, 1.5],  "faces": { "north": {"texture": "#crystal"}, "south": {"texture": "#crystal"}, "up": {"texture": "#crystal"}, "down": {"texture": "#crystal"} } },
+    { "from": [1.5, 14.5, 14.5], "to": [14.5, 16, 16],   "faces": { "north": {"texture": "#crystal"}, "south": {"texture": "#crystal"}, "up": {"texture": "#crystal"}, "down": {"texture": "#crystal"} } },
+    { "from": [0, 14.5, 1.5],    "to": [1.5, 16, 14.5],  "faces": { "east": {"texture": "#crystal"}, "west": {"texture": "#crystal"}, "up": {"texture": "#crystal"}, "down": {"texture": "#crystal"} } },
+    { "from": [14.5, 14.5, 1.5], "to": [16, 16, 14.5],   "faces": { "east": {"texture": "#crystal"}, "west": {"texture": "#crystal"}, "up": {"texture": "#crystal"}, "down": {"texture": "#crystal"} } }
+  ]
+}

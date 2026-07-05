@@ -5,6 +5,8 @@ import java.util.function.Function;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.kestalkayden.lonsdaleite.blocks.Lonsdaleite_Wardframe;
+import com.kestalkayden.lonsdaleite.blocks.Lonsdaleite_Wardframe_Item;
 import com.kestalkayden.lonsdaleite.items.armor.LonsdaleiteArmor;
 import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Mace;
 import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Omnitool;
@@ -41,6 +43,9 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.component.Weapon;
 import net.minecraft.world.item.equipment.ArmorType;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 
 public class Lonsdaleite implements ModInitializer {
     public static final String MOD_ID = "lonsdaleite";
@@ -79,6 +84,10 @@ public class Lonsdaleite implements ModInitializer {
     // Mace
     public static Item LONSDALEITE_MACE;
 
+    // Blocks
+    public static Block LONSDALEITE_WARDFRAME_BLOCK;
+    public static Item LONSDALEITE_WARDFRAME;
+
     // Armor
     public static Item LONSDALEITE_HELMET;
     public static Item LONSDALEITE_CHESTPLATE;
@@ -96,6 +105,24 @@ public class Lonsdaleite implements ModInitializer {
         ResourceKey<Item> key = ResourceKey.create(Registries.ITEM, id);
         T item = factory.apply(new Item.Properties().setId(key));
         return Registry.register(BuiltInRegistries.ITEM, id, item);
+    }
+
+    private static <T extends Block> T registerBlock(String name, Function<BlockBehaviour.Properties, T> factory) {
+        Identifier id = Identifier.fromNamespaceAndPath(MOD_ID, name);
+        ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, id);
+        T block = factory.apply(BlockBehaviour.Properties.of().setId(key));
+        return Registry.register(BuiltInRegistries.BLOCK, id, block);
+    }
+
+    // Sturdy crystal: diamond-tier mining, creeper-proof, soft glow, amethyst chime.
+    static BlockBehaviour.Properties wardframeProperties(BlockBehaviour.Properties p) {
+        return p.strength(5.0F, 1200.0F)
+            .sound(SoundType.AMETHYST)
+            .noOcclusion()
+            .requiresCorrectToolForDrops()
+            .lightLevel(state -> 7)
+            .isSuffocating((state, level, pos) -> false)
+            .isViewBlocking((state, level, pos) -> false);
     }
 
     @Override
@@ -180,6 +207,12 @@ public class Lonsdaleite implements ModInitializer {
         PERFECT_LONSDALEITE_LEGGINGS   = register("perfect_lonsdaleite_leggings",   p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.PERFECT_LONSDALEITE, ArmorType.LEGGINGS, p));
         PERFECT_LONSDALEITE_BOOTS      = register("perfect_lonsdaleite_boots",      p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.PERFECT_LONSDALEITE, ArmorType.BOOTS, p));
 
+        // Blocks
+        LONSDALEITE_WARDFRAME_BLOCK = registerBlock("lonsdaleite_wardframe", p ->
+            new Lonsdaleite_Wardframe(wardframeProperties(p)));
+        LONSDALEITE_WARDFRAME = register("lonsdaleite_wardframe", p ->
+            new Lonsdaleite_Wardframe_Item(LONSDALEITE_WARDFRAME_BLOCK, p.useBlockDescriptionPrefix()));
+
         // Custom creative tab
         ResourceKey<CreativeModeTab> tabKey = ResourceKey.create(
             Registries.CREATIVE_MODE_TAB,
@@ -193,6 +226,8 @@ public class Lonsdaleite implements ModInitializer {
                     entries.accept(PREPARED_LONSDALEITE);
                     entries.accept(REFINED_LONSDALEITE);
                     entries.accept(PERFECT_LONSDALEITE);
+
+                    entries.accept(LONSDALEITE_WARDFRAME);
 
                     entries.accept(LONSDALEITE_PICKAXE);
                     entries.accept(PERFECT_LONSDALEITE_PICKAXE);
