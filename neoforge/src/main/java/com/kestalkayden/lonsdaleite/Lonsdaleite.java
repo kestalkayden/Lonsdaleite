@@ -57,7 +57,8 @@ public class Lonsdaleite {
     // Blocks — sturdy crystal: diamond-tier mining, creeper-proof, soft glow, amethyst chime.
     public static final DeferredBlock<Lonsdaleite_Wardframe> LONSDALEITE_WARDFRAME_BLOCK = BLOCKS.registerBlock("lonsdaleite_wardframe",
         Lonsdaleite_Wardframe::new,
-        (BlockBehaviour.Properties p) -> p.strength(5.0F, 1200.0F)
+        BlockBehaviour.Properties.of()
+            .strength(5.0F, 1200.0F)
             .sound(SoundType.AMETHYST)
             .noOcclusion()
             .requiresCorrectToolForDrops()
@@ -92,10 +93,6 @@ public class Lonsdaleite {
     public static final DeferredItem<Perfect_Lonsdaleite_Short_Sword> PERFECT_LONSDALEITE_SHORT_SWORD = ITEMS.registerItem("perfect_lonsdaleite_short_sword", p -> new Perfect_Lonsdaleite_Short_Sword(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 2, -0.4F, p.sword(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 2, -0.4F).enchantable(20)));
     public static final DeferredItem<Lonsdaleite_War_Axe>           LONSDALEITE_WAR_AXE           = ITEMS.registerItem("lonsdaleite_war_axe",           p -> new Lonsdaleite_War_Axe(LonsdaleiteToolMaterials.LONSDALEITE, 12, -3.6F, p.sword(LonsdaleiteToolMaterials.LONSDALEITE, 12, -3.6F).enchantable(15)));
     public static final DeferredItem<Perfect_Lonsdaleite_War_Axe>   PERFECT_LONSDALEITE_WAR_AXE   = ITEMS.registerItem("perfect_lonsdaleite_war_axe",   p -> new Perfect_Lonsdaleite_War_Axe(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 15, -3.5F, p.sword(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 15, -3.5F).enchantable(20)));
-
-    // Spears — plain Item; spear() sets durability/repair/enchant from the material + kinetic & piercing components
-    public static final DeferredItem<Item> LONSDALEITE_SPEAR         = ITEMS.registerItem("lonsdaleite_spear",         p -> new Item(p.spear(LonsdaleiteToolMaterials.LONSDALEITE, 1.15F, 1.25F, 0.4F, 2.5F, 9.0F, 5.5F, 5.1F, 8.75F, 4.6F)));
-    public static final DeferredItem<Item> PERFECT_LONSDALEITE_SPEAR = ITEMS.registerItem("perfect_lonsdaleite_spear", p -> new Item(p.spear(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 1.15F, 1.35F, 0.4F, 2.5F, 9.0F, 5.5F, 5.1F, 8.75F, 4.6F)));
 
     // Mace — Lonsdaleite_Mace (vanilla smash attack); stronger melee (+7 base vs vanilla +5), gem-tier durability, breeze-rod handle, repairs with Perfect gems
     public static final DeferredItem<Lonsdaleite_Mace> LONSDALEITE_MACE = ITEMS.registerItem("lonsdaleite_mace",          p -> new Lonsdaleite_Mace(p.rarity(Rarity.EPIC).durability(2640).component(DataComponents.TOOL, MaceItem.createToolProperties()).repairable(LonsdaleiteToolMaterials.REPAIRS_PERFECT_LONSDALEITE_TOOLS).attributes(Lonsdaleite_Mace.createAttributes()).enchantable(20).component(DataComponents.WEAPON, new Weapon(1))));
@@ -137,8 +134,6 @@ public class Lonsdaleite {
                 entries.accept(PERFECT_LONSDALEITE_SWORD.get());
                 entries.accept(LONSDALEITE_WAR_AXE.get());
                 entries.accept(PERFECT_LONSDALEITE_WAR_AXE.get());
-                entries.accept(LONSDALEITE_SPEAR.get());
-                entries.accept(PERFECT_LONSDALEITE_SPEAR.get());
                 entries.accept(LONSDALEITE_MACE.get());
                 entries.accept(LONSDALEITE_HELMET.get());
                 entries.accept(LONSDALEITE_CHESTPLATE.get());
@@ -184,7 +179,6 @@ public class Lonsdaleite {
                 LONSDALEITE_SHORT_SWORD, PERFECT_LONSDALEITE_SHORT_SWORD,
                 LONSDALEITE_SWORD,       PERFECT_LONSDALEITE_SWORD,
                 LONSDALEITE_WAR_AXE,     PERFECT_LONSDALEITE_WAR_AXE,
-                LONSDALEITE_SPEAR,       PERFECT_LONSDALEITE_SPEAR,
                 LONSDALEITE_MACE
             }) {
                 ItemStack stack = new ItemStack(entry.get());

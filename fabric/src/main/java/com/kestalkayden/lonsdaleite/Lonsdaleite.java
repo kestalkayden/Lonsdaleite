@@ -22,14 +22,14 @@ import com.kestalkayden.lonsdaleite.materials.LonsdaleiteArmorMaterials;
 import com.kestalkayden.lonsdaleite.materials.LonsdaleiteToolMaterials;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
-import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -77,10 +77,6 @@ public class Lonsdaleite implements ModInitializer {
     public static Item LONSDALEITE_WAR_AXE;
     public static Item PERFECT_LONSDALEITE_WAR_AXE;
 
-    // Spears
-    public static Item LONSDALEITE_SPEAR;
-    public static Item PERFECT_LONSDALEITE_SPEAR;
-
     // Mace
     public static Item LONSDALEITE_MACE;
 
@@ -101,14 +97,14 @@ public class Lonsdaleite implements ModInitializer {
     public static CreativeModeTab LONSDALEITE_TAB;
 
     private static <T extends Item> T register(String name, Function<Item.Properties, T> factory) {
-        Identifier id = Identifier.fromNamespaceAndPath(MOD_ID, name);
+        ResourceLocation id = ResourceLocation.fromNamespaceAndPath(MOD_ID, name);
         ResourceKey<Item> key = ResourceKey.create(Registries.ITEM, id);
         T item = factory.apply(new Item.Properties().setId(key));
         return Registry.register(BuiltInRegistries.ITEM, id, item);
     }
 
     private static <T extends Block> T registerBlock(String name, Function<BlockBehaviour.Properties, T> factory) {
-        Identifier id = Identifier.fromNamespaceAndPath(MOD_ID, name);
+        ResourceLocation id = ResourceLocation.fromNamespaceAndPath(MOD_ID, name);
         ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, id);
         T block = factory.apply(BlockBehaviour.Properties.of().setId(key));
         return Registry.register(BuiltInRegistries.BLOCK, id, block);
@@ -181,12 +177,6 @@ public class Lonsdaleite implements ModInitializer {
             new Perfect_Lonsdaleite_War_Axe(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 15, -3.5F,
                 p.sword(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 15, -3.5F).enchantable(20)));
 
-        // Spears — plain Item; spear() sets durability/repair/enchant from the material + kinetic & piercing components
-        LONSDALEITE_SPEAR = register("lonsdaleite_spear", p ->
-            new Item(p.spear(LonsdaleiteToolMaterials.LONSDALEITE, 1.15F, 1.25F, 0.4F, 2.5F, 9.0F, 5.5F, 5.1F, 8.75F, 4.6F)));
-        PERFECT_LONSDALEITE_SPEAR = register("perfect_lonsdaleite_spear", p ->
-            new Item(p.spear(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 1.15F, 1.35F, 0.4F, 2.5F, 9.0F, 5.5F, 5.1F, 8.75F, 4.6F)));
-
         // Mace — Lonsdaleite_Mace (vanilla smash attack); stronger melee (+7 base vs vanilla +5), gem-tier durability, breeze-rod handle, repairs with Perfect gems
         LONSDALEITE_MACE = register("lonsdaleite_mace", p ->
             new Lonsdaleite_Mace(p.rarity(Rarity.EPIC)
@@ -216,9 +206,9 @@ public class Lonsdaleite implements ModInitializer {
         // Custom creative tab
         ResourceKey<CreativeModeTab> tabKey = ResourceKey.create(
             Registries.CREATIVE_MODE_TAB,
-            Identifier.fromNamespaceAndPath(MOD_ID, "lonsdaleite"));
+            ResourceLocation.fromNamespaceAndPath(MOD_ID, "lonsdaleite"));
         LONSDALEITE_TAB = Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, tabKey,
-            FabricCreativeModeTab.builder()
+            FabricItemGroup.builder()
                 .icon(() -> new ItemStack(REFINED_LONSDALEITE))
                 .title(Component.translatable("itemGroup.lonsdaleite.item_group"))
                 .displayItems((displayContext, entries) -> {
@@ -247,8 +237,6 @@ public class Lonsdaleite implements ModInitializer {
                     entries.accept(LONSDALEITE_WAR_AXE);
                     entries.accept(PERFECT_LONSDALEITE_WAR_AXE);
 
-                    entries.accept(LONSDALEITE_SPEAR);
-                    entries.accept(PERFECT_LONSDALEITE_SPEAR);
                     entries.accept(LONSDALEITE_MACE);
 
                     entries.accept(LONSDALEITE_HELMET);
@@ -263,8 +251,8 @@ public class Lonsdaleite implements ModInitializer {
                 .build());
 
         // Inject into vanilla Ingredients tab after RAW_GOLD
-        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(output -> {
-            output.insertAfter(Items.RAW_GOLD,
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS).register(entries -> {
+            entries.addAfter(Items.RAW_GOLD,
                 new ItemStack(RAW_LONSDALEITE),
                 new ItemStack(PREPARED_LONSDALEITE),
                 new ItemStack(REFINED_LONSDALEITE),
@@ -272,8 +260,8 @@ public class Lonsdaleite implements ModInitializer {
         });
 
         // Inject tools after Netherite Hoe in the Tools tab
-        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.TOOLS_AND_UTILITIES).register(output -> {
-            output.insertAfter(Items.NETHERITE_HOE,
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.TOOLS_AND_UTILITIES).register(entries -> {
+            entries.addAfter(Items.NETHERITE_HOE,
                 new ItemStack(LONSDALEITE_PICKAXE),
                 new ItemStack(PERFECT_LONSDALEITE_PICKAXE),
                 new ItemStack(LONSDALEITE_AXE),
@@ -287,18 +275,16 @@ public class Lonsdaleite implements ModInitializer {
         });
 
         // Inject weapons + armor after the Netherite group in the Combat tab
-        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.COMBAT).register(output -> {
-            output.insertAfter(Items.NETHERITE_AXE,
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.COMBAT).register(entries -> {
+            entries.addAfter(Items.NETHERITE_AXE,
                 new ItemStack(LONSDALEITE_SHORT_SWORD),
                 new ItemStack(PERFECT_LONSDALEITE_SHORT_SWORD),
                 new ItemStack(LONSDALEITE_SWORD),
                 new ItemStack(PERFECT_LONSDALEITE_SWORD),
                 new ItemStack(LONSDALEITE_WAR_AXE),
                 new ItemStack(PERFECT_LONSDALEITE_WAR_AXE),
-                new ItemStack(LONSDALEITE_SPEAR),
-                new ItemStack(PERFECT_LONSDALEITE_SPEAR),
                 new ItemStack(LONSDALEITE_MACE));
-            output.insertAfter(Items.NETHERITE_BOOTS,
+            entries.addAfter(Items.NETHERITE_BOOTS,
                 new ItemStack(LONSDALEITE_HELMET),
                 new ItemStack(LONSDALEITE_CHESTPLATE),
                 new ItemStack(LONSDALEITE_LEGGINGS),

@@ -17,13 +17,13 @@ logoFile="assets/lonsdaleite/icon.png"
 [[dependencies.lonsdaleite]]
 modId="neoforge"
 type="required"
-versionRange="[26.2.0.0-beta,)"
+versionRange="[21.8.0-beta,)"
 ordering="NONE"
 side="BOTH"
 
 [[dependencies.lonsdaleite]]
 modId="minecraft"
 type="required"
-versionRange="[26.2,26.3)"
+versionRange="[1.21.6,1.21.11)"
 ordering="NONE"
 side="BOTH"

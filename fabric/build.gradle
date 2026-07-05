@@ -1,5 +1,5 @@
 plugins {
-    id 'net.fabricmc.fabric-loom' version "${loom_version}"
+    id 'fabric-loom' version "${loom_version}"
     id 'maven-publish'
 }
 
@@ -14,10 +14,14 @@ sourceSets.main.java.srcDir "${rootProject.projectDir}/common/src/main/java"
 
 dependencies {
     minecraft "com.mojang:minecraft:${minecraft_version}"
-    // No `mappings` line — Minecraft 26.1 is deobfuscated and ships Mojang's official names.
+    // 1.21.8 ships obfuscated, so remap to Mojang's official names to match the
+    // NeoForge/NeoForm view the shared :common sources compile against.
+    mappings loom.officialMojangMappings()
 
-    implementation "net.fabricmc:fabric-loader:${loader_version}"
-    implementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
+    // 1.21.8 fabric-api ships in intermediary names; modImplementation makes loom remap
+    // it into the project's Mojang mappings so it lines up with the remapped Minecraft.
+    modImplementation "net.fabricmc:fabric-loader:${loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
 }
 
 loom {
@@ -47,7 +51,7 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-    it.options.release = 25
+    it.options.release = 21
 }
 
 java {

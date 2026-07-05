@@ -3,7 +3,7 @@ package com.kestalkayden.lonsdaleite.materials;
 import com.kestalkayden.lonsdaleite.LonsdaleiteCommon;
 
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ToolMaterial;
@@ -12,11 +12,11 @@ public class LonsdaleiteToolMaterials {
 
     public static final TagKey<Item> REPAIRS_LONSDALEITE_TOOLS = TagKey.create(
         Registries.ITEM,
-        Identifier.fromNamespaceAndPath(LonsdaleiteCommon.MOD_ID, "repairs_lonsdaleite_tools"));
+        ResourceLocation.fromNamespaceAndPath(LonsdaleiteCommon.MOD_ID, "repairs_lonsdaleite_tools"));
 
     public static final TagKey<Item> REPAIRS_PERFECT_LONSDALEITE_TOOLS = TagKey.create(
         Registries.ITEM,
-        Identifier.fromNamespaceAndPath(LonsdaleiteCommon.MOD_ID, "repairs_perfect_lonsdaleite_tools"));
+        ResourceLocation.fromNamespaceAndPath(LonsdaleiteCommon.MOD_ID, "repairs_perfect_lonsdaleite_tools"));
 
     public static final ToolMaterial LONSDALEITE = new ToolMaterial(
         ToolMaterial.NETHERITE.incorrectBlocksForDrops(),

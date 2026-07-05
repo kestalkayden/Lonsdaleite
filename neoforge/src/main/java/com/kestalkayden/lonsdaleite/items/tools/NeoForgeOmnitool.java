@@ -1,7 +1,7 @@
 package com.kestalkayden.lonsdaleite.items.tools;
 
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemInstance;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ToolMaterial;
 import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.ItemAbility;
@@ -18,7 +18,7 @@ public class NeoForgeOmnitool extends Lonsdaleite_Omnitool {
     }
 
     @Override
-    public boolean canPerformAction(ItemInstance stack, ItemAbility action) {
+    public boolean canPerformAction(ItemStack stack, ItemAbility action) {
         return ItemAbilities.DEFAULT_AXE_ACTIONS.contains(action)
             || ItemAbilities.DEFAULT_SHOVEL_ACTIONS.contains(action)
             || ItemAbilities.DEFAULT_HOE_ACTIONS.contains(action);

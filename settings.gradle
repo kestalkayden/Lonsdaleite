@@ -1,4 +1,14 @@
 pluginManagement {
+    // Loom 1.11.x (the 1.21.8-era loom that still remaps obfuscated Minecraft to Mojang
+    // names) predates the plugin-marker convention, so resolve the plugin id straight to
+    // the library artifact.
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.id == 'fabric-loom') {
+                useModule("net.fabricmc:fabric-loom:${requested.version}")
+            }
+        }
+    }
     repositories {
         maven {
             name = 'Fabric'
