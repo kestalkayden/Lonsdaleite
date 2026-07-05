@@ -5,6 +5,8 @@ import java.util.function.Supplier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.kestalkayden.lonsdaleite.blocks.Lonsdaleite_Wardframe;
+import com.kestalkayden.lonsdaleite.blocks.Lonsdaleite_Wardframe_Item;
 import com.kestalkayden.lonsdaleite.items.armor.LonsdaleiteArmor;
 import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Mace;
 import com.kestalkayden.lonsdaleite.items.tools.Lonsdaleite_Pickaxe;
@@ -34,9 +36,12 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.component.Weapon;
 import net.minecraft.world.item.equipment.ArmorType;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -46,7 +51,21 @@ public class Lonsdaleite {
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
     private static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MOD_ID);
+    private static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MOD_ID);
     private static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MOD_ID);
+
+    // Blocks — sturdy crystal: diamond-tier mining, creeper-proof, soft glow, amethyst chime.
+    public static final DeferredBlock<Lonsdaleite_Wardframe> LONSDALEITE_WARDFRAME_BLOCK = BLOCKS.registerBlock("lonsdaleite_wardframe",
+        Lonsdaleite_Wardframe::new,
+        (BlockBehaviour.Properties p) -> p.strength(5.0F, 1200.0F)
+            .sound(SoundType.AMETHYST)
+            .noOcclusion()
+            .requiresCorrectToolForDrops()
+            .lightLevel(state -> 7)
+            .isSuffocating((state, level, pos) -> false)
+            .isViewBlocking((state, level, pos) -> false));
+    public static final DeferredItem<Lonsdaleite_Wardframe_Item> LONSDALEITE_WARDFRAME = ITEMS.registerItem("lonsdaleite_wardframe",
+        p -> new Lonsdaleite_Wardframe_Item(LONSDALEITE_WARDFRAME_BLOCK.get(), p.useBlockDescriptionPrefix()));
 
     // Raw materials
     public static final DeferredItem<Item> RAW_LONSDALEITE      = ITEMS.registerSimpleItem("raw_lonsdaleite");
@@ -101,6 +120,7 @@ public class Lonsdaleite {
                 entries.accept(PREPARED_LONSDALEITE.get());
                 entries.accept(REFINED_LONSDALEITE.get());
                 entries.accept(PERFECT_LONSDALEITE.get());
+                entries.accept(LONSDALEITE_WARDFRAME.get());
                 entries.accept(LONSDALEITE_PICKAXE.get());
                 entries.accept(PERFECT_LONSDALEITE_PICKAXE.get());
                 entries.accept(LONSDALEITE_AXE.get());
@@ -133,6 +153,7 @@ public class Lonsdaleite {
 
     public Lonsdaleite(IEventBus modBus) {
         LOGGER.info("Initializing Lonsdaleite Mod");
+        BLOCKS.register(modBus);
         ITEMS.register(modBus);
         TABS.register(modBus);
         modBus.addListener(Lonsdaleite::onBuildCreativeTabs);

@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "RRR",
+        "R R",
+        "RRR"
+    ],
+    "key": {
+        "R": "lonsdaleite:refined_lonsdaleite"
+    },
+    "result": {
+        "id": "lonsdaleite:lonsdaleite_wardframe",
+        "count": 8
+    }
+  }
