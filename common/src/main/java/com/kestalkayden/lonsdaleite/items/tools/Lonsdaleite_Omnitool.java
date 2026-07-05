@@ -7,24 +7,22 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.PickaxeItem;
-import net.minecraft.world.item.ToolMaterial;
+import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.block.state.BlockState;
 
 /**
  * The Lonsdaleite Omnitool acts as pickaxe, axe, shovel, hoe and sword at once. Both tiers share
  * this class; the tier difference (Perfect = the re-hardened, higher-stat material) lives entirely
- * in the {@link ToolMaterial} passed in. Durability is applied by the {@code .pickaxe(...)} builder
- * at registration, and mining durability loss is handled by the base {@code Item.mineBlock} via the
- * Tool component's {@code damagePerBlock}, so no override is needed here.
+ * in the {@link Tier} passed in. The PickaxeItem base supplies durability + mining from the tier;
+ * the overrides below widen it to mine (and be correct for) every tool category.
  */
 public class Lonsdaleite_Omnitool extends PickaxeItem {
-    private final ToolMaterial material;
+    private final Tier material;
 
-    public Lonsdaleite_Omnitool(ToolMaterial material, int attackDamage, float attackSpeed, Item.Properties properties) {
-        // 1.21.4: PickaxeItem base supplies attack stats + durability from the material
-        // (no .pickaxe() Properties helper here); the overrides below widen it to an omnitool.
-        super(material, attackDamage, attackSpeed, properties);
+    public Lonsdaleite_Omnitool(Tier material, int attackDamage, float attackSpeed, Item.Properties properties) {
+        // 1.21.1: PickaxeItem(Tier, Properties) - the 4-arg tool ctors are 1.21.4+.
+        super(material, properties);
         this.material = material;
     }
 

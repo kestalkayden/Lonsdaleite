@@ -2,7 +2,7 @@ package com.kestalkayden.lonsdaleite.items.tools;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ToolMaterial;
+import net.minecraft.world.item.Tier;
 import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.ItemAbility;
 
@@ -13,7 +13,7 @@ import net.neoforged.neoforge.common.ItemAbility;
  * Fabric has no such gate and registers the plain {@link Lonsdaleite_Omnitool} directly.
  */
 public class NeoForgeOmnitool extends Lonsdaleite_Omnitool {
-    public NeoForgeOmnitool(ToolMaterial material, int attackDamage, float attackSpeed, Item.Properties properties) {
+    public NeoForgeOmnitool(Tier material, int attackDamage, float attackSpeed, Item.Properties properties) {
         super(material, attackDamage, attackSpeed, properties);
     }
 

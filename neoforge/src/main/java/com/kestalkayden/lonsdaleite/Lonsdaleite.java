@@ -34,7 +34,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.MaceItem;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.ShovelItem;
-import net.minecraft.world.item.equipment.ArmorType;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.bus.api.IEventBus;
@@ -65,7 +65,7 @@ public class Lonsdaleite {
             .isSuffocating((state, level, pos) -> false)
             .isViewBlocking((state, level, pos) -> false));
     public static final DeferredItem<Lonsdaleite_Wardframe_Item> LONSDALEITE_WARDFRAME = ITEMS.registerItem("lonsdaleite_wardframe",
-        p -> new Lonsdaleite_Wardframe_Item(LONSDALEITE_WARDFRAME_BLOCK.get(), p.useBlockDescriptionPrefix()));
+        p -> new Lonsdaleite_Wardframe_Item(LONSDALEITE_WARDFRAME_BLOCK.get(), p));
 
     // Raw materials
     public static final DeferredItem<Item> RAW_LONSDALEITE      = ITEMS.registerSimpleItem("raw_lonsdaleite");
@@ -74,37 +74,37 @@ public class Lonsdaleite {
     public static final DeferredItem<Item> PERFECT_LONSDALEITE  = ITEMS.registerSimpleItem("perfect_lonsdaleite");
 
     // Mining tools
-    public static final DeferredItem<Lonsdaleite_Pickaxe>         LONSDALEITE_PICKAXE         = ITEMS.registerItem("lonsdaleite_pickaxe",         p -> new Lonsdaleite_Pickaxe(LonsdaleiteToolMaterials.LONSDALEITE, 5, -2.8F, p.enchantable(15)));
-    public static final DeferredItem<Perfect_Lonsdaleite_Pickaxe> PERFECT_LONSDALEITE_PICKAXE = ITEMS.registerItem("perfect_lonsdaleite_pickaxe", p -> new Perfect_Lonsdaleite_Pickaxe(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 7, -2.7F, p.enchantable(20)));
-    public static final DeferredItem<AxeItem>              LONSDALEITE_AXE              = ITEMS.registerItem("lonsdaleite_axe",              p -> new AxeItem(LonsdaleiteToolMaterials.LONSDALEITE, 8, -3.0F, p));
-    public static final DeferredItem<AxeItem>              PERFECT_LONSDALEITE_AXE      = ITEMS.registerItem("perfect_lonsdaleite_axe",      p -> new AxeItem(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 11, -2.9F, p));
-    public static final DeferredItem<ShovelItem>           LONSDALEITE_SHOVEL           = ITEMS.registerItem("lonsdaleite_shovel",           p -> new ShovelItem(LonsdaleiteToolMaterials.LONSDALEITE, 4, -3.0F, p));
-    public static final DeferredItem<ShovelItem>           PERFECT_LONSDALEITE_SHOVEL   = ITEMS.registerItem("perfect_lonsdaleite_shovel",   p -> new ShovelItem(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 6, -2.9F, p));
-    public static final DeferredItem<HoeItem>              LONSDALEITE_HOE              = ITEMS.registerItem("lonsdaleite_hoe",              p -> new HoeItem(LonsdaleiteToolMaterials.LONSDALEITE, 2, 0.0F, p));
-    public static final DeferredItem<HoeItem>              PERFECT_LONSDALEITE_HOE      = ITEMS.registerItem("perfect_lonsdaleite_hoe",      p -> new HoeItem(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 3, 0.2F, p));
-    public static final DeferredItem<NeoForgeOmnitool>     LONSDALEITE_OMNITOOL         = ITEMS.registerItem("lonsdaleite_omnitool",         p -> new NeoForgeOmnitool(LonsdaleiteToolMaterials.LONSDALEITE, 3, -2.9F, p.enchantable(15)));
-    public static final DeferredItem<NeoForgeOmnitool>     PERFECT_LONSDALEITE_OMNITOOL = ITEMS.registerItem("perfect_lonsdaleite_omnitool", p -> new NeoForgeOmnitool(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 5, -2.8F, p.enchantable(20)));
+    public static final DeferredItem<Lonsdaleite_Pickaxe>         LONSDALEITE_PICKAXE         = ITEMS.registerItem("lonsdaleite_pickaxe",         p -> new Lonsdaleite_Pickaxe(LonsdaleiteToolMaterials.LONSDALEITE, 5, -2.8F, p));
+    public static final DeferredItem<Perfect_Lonsdaleite_Pickaxe> PERFECT_LONSDALEITE_PICKAXE = ITEMS.registerItem("perfect_lonsdaleite_pickaxe", p -> new Perfect_Lonsdaleite_Pickaxe(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 7, -2.7F, p));
+    public static final DeferredItem<AxeItem>              LONSDALEITE_AXE              = ITEMS.registerItem("lonsdaleite_axe",              p -> new AxeItem(LonsdaleiteToolMaterials.LONSDALEITE, p));
+    public static final DeferredItem<AxeItem>              PERFECT_LONSDALEITE_AXE      = ITEMS.registerItem("perfect_lonsdaleite_axe",      p -> new AxeItem(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, p));
+    public static final DeferredItem<ShovelItem>           LONSDALEITE_SHOVEL           = ITEMS.registerItem("lonsdaleite_shovel",           p -> new ShovelItem(LonsdaleiteToolMaterials.LONSDALEITE, p));
+    public static final DeferredItem<ShovelItem>           PERFECT_LONSDALEITE_SHOVEL   = ITEMS.registerItem("perfect_lonsdaleite_shovel",   p -> new ShovelItem(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, p));
+    public static final DeferredItem<HoeItem>              LONSDALEITE_HOE              = ITEMS.registerItem("lonsdaleite_hoe",              p -> new HoeItem(LonsdaleiteToolMaterials.LONSDALEITE, p));
+    public static final DeferredItem<HoeItem>              PERFECT_LONSDALEITE_HOE      = ITEMS.registerItem("perfect_lonsdaleite_hoe",      p -> new HoeItem(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, p));
+    public static final DeferredItem<NeoForgeOmnitool>     LONSDALEITE_OMNITOOL         = ITEMS.registerItem("lonsdaleite_omnitool",         p -> new NeoForgeOmnitool(LonsdaleiteToolMaterials.LONSDALEITE, 3, -2.9F, p));
+    public static final DeferredItem<NeoForgeOmnitool>     PERFECT_LONSDALEITE_OMNITOOL = ITEMS.registerItem("perfect_lonsdaleite_omnitool", p -> new NeoForgeOmnitool(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 5, -2.8F, p));
 
     // Weapons
-    public static final DeferredItem<Lonsdaleite_Sword>             LONSDALEITE_SWORD             = ITEMS.registerItem("lonsdaleite_sword",             p -> new Lonsdaleite_Sword(LonsdaleiteToolMaterials.LONSDALEITE, 6, -2.8F, p.enchantable(15)));
-    public static final DeferredItem<Perfect_Lonsdaleite_Sword>     PERFECT_LONSDALEITE_SWORD     = ITEMS.registerItem("perfect_lonsdaleite_sword",     p -> new Perfect_Lonsdaleite_Sword(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 8, -2.7F, p.enchantable(20)));
-    public static final DeferredItem<Lonsdaleite_Short_Sword>       LONSDALEITE_SHORT_SWORD       = ITEMS.registerItem("lonsdaleite_short_sword",       p -> new Lonsdaleite_Short_Sword(LonsdaleiteToolMaterials.LONSDALEITE, 1, -0.7F, p.enchantable(15)));
-    public static final DeferredItem<Perfect_Lonsdaleite_Short_Sword> PERFECT_LONSDALEITE_SHORT_SWORD = ITEMS.registerItem("perfect_lonsdaleite_short_sword", p -> new Perfect_Lonsdaleite_Short_Sword(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 2, -0.4F, p.enchantable(20)));
-    public static final DeferredItem<Lonsdaleite_War_Axe>           LONSDALEITE_WAR_AXE           = ITEMS.registerItem("lonsdaleite_war_axe",           p -> new Lonsdaleite_War_Axe(LonsdaleiteToolMaterials.LONSDALEITE, 12, -3.6F, p.enchantable(15)));
-    public static final DeferredItem<Perfect_Lonsdaleite_War_Axe>   PERFECT_LONSDALEITE_WAR_AXE   = ITEMS.registerItem("perfect_lonsdaleite_war_axe",   p -> new Perfect_Lonsdaleite_War_Axe(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 15, -3.5F, p.enchantable(20)));
+    public static final DeferredItem<Lonsdaleite_Sword>             LONSDALEITE_SWORD             = ITEMS.registerItem("lonsdaleite_sword",             p -> new Lonsdaleite_Sword(LonsdaleiteToolMaterials.LONSDALEITE, 6, -2.8F, p));
+    public static final DeferredItem<Perfect_Lonsdaleite_Sword>     PERFECT_LONSDALEITE_SWORD     = ITEMS.registerItem("perfect_lonsdaleite_sword",     p -> new Perfect_Lonsdaleite_Sword(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 8, -2.7F, p));
+    public static final DeferredItem<Lonsdaleite_Short_Sword>       LONSDALEITE_SHORT_SWORD       = ITEMS.registerItem("lonsdaleite_short_sword",       p -> new Lonsdaleite_Short_Sword(LonsdaleiteToolMaterials.LONSDALEITE, 1, -0.7F, p));
+    public static final DeferredItem<Perfect_Lonsdaleite_Short_Sword> PERFECT_LONSDALEITE_SHORT_SWORD = ITEMS.registerItem("perfect_lonsdaleite_short_sword", p -> new Perfect_Lonsdaleite_Short_Sword(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 2, -0.4F, p));
+    public static final DeferredItem<Lonsdaleite_War_Axe>           LONSDALEITE_WAR_AXE           = ITEMS.registerItem("lonsdaleite_war_axe",           p -> new Lonsdaleite_War_Axe(LonsdaleiteToolMaterials.LONSDALEITE, 12, -3.6F, p));
+    public static final DeferredItem<Perfect_Lonsdaleite_War_Axe>   PERFECT_LONSDALEITE_WAR_AXE   = ITEMS.registerItem("perfect_lonsdaleite_war_axe",   p -> new Perfect_Lonsdaleite_War_Axe(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 15, -3.5F, p));
 
     // Mace — Lonsdaleite_Mace (vanilla smash attack); stronger melee (+7 base vs vanilla +5), gem-tier durability, breeze-rod handle, repairs with Perfect gems
-    public static final DeferredItem<Lonsdaleite_Mace> LONSDALEITE_MACE = ITEMS.registerItem("lonsdaleite_mace",          p -> new Lonsdaleite_Mace(p.rarity(Rarity.EPIC).durability(2640).component(DataComponents.TOOL, MaceItem.createToolProperties()).repairable(LonsdaleiteToolMaterials.REPAIRS_PERFECT_LONSDALEITE_TOOLS).attributes(Lonsdaleite_Mace.createAttributes()).enchantable(20)));
+    public static final DeferredItem<Lonsdaleite_Mace> LONSDALEITE_MACE = ITEMS.registerItem("lonsdaleite_mace",          p -> new Lonsdaleite_Mace(p.rarity(Rarity.EPIC).durability(2640).component(DataComponents.TOOL, MaceItem.createToolProperties()).attributes(Lonsdaleite_Mace.createAttributes())));
 
     // Armor
-    public static final DeferredItem<LonsdaleiteArmor> LONSDALEITE_HELMET             = ITEMS.registerItem("lonsdaleite_helmet",             p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.LONSDALEITE, ArmorType.HELMET, p));
-    public static final DeferredItem<LonsdaleiteArmor> LONSDALEITE_CHESTPLATE         = ITEMS.registerItem("lonsdaleite_chestplate",         p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.LONSDALEITE, ArmorType.CHESTPLATE, p));
-    public static final DeferredItem<LonsdaleiteArmor> LONSDALEITE_LEGGINGS           = ITEMS.registerItem("lonsdaleite_leggings",           p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.LONSDALEITE, ArmorType.LEGGINGS, p));
-    public static final DeferredItem<LonsdaleiteArmor> LONSDALEITE_BOOTS              = ITEMS.registerItem("lonsdaleite_boots",              p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.LONSDALEITE, ArmorType.BOOTS, p));
-    public static final DeferredItem<LonsdaleiteArmor> PERFECT_LONSDALEITE_HELMET     = ITEMS.registerItem("perfect_lonsdaleite_helmet",     p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.PERFECT_LONSDALEITE, ArmorType.HELMET, p));
-    public static final DeferredItem<LonsdaleiteArmor> PERFECT_LONSDALEITE_CHESTPLATE = ITEMS.registerItem("perfect_lonsdaleite_chestplate", p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.PERFECT_LONSDALEITE, ArmorType.CHESTPLATE, p));
-    public static final DeferredItem<LonsdaleiteArmor> PERFECT_LONSDALEITE_LEGGINGS   = ITEMS.registerItem("perfect_lonsdaleite_leggings",   p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.PERFECT_LONSDALEITE, ArmorType.LEGGINGS, p));
-    public static final DeferredItem<LonsdaleiteArmor> PERFECT_LONSDALEITE_BOOTS      = ITEMS.registerItem("perfect_lonsdaleite_boots",      p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.PERFECT_LONSDALEITE, ArmorType.BOOTS, p));
+    public static final DeferredItem<LonsdaleiteArmor> LONSDALEITE_HELMET             = ITEMS.registerItem("lonsdaleite_helmet",             p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.LONSDALEITE, ArmorItem.Type.HELMET, p));
+    public static final DeferredItem<LonsdaleiteArmor> LONSDALEITE_CHESTPLATE         = ITEMS.registerItem("lonsdaleite_chestplate",         p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.LONSDALEITE, ArmorItem.Type.CHESTPLATE, p));
+    public static final DeferredItem<LonsdaleiteArmor> LONSDALEITE_LEGGINGS           = ITEMS.registerItem("lonsdaleite_leggings",           p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.LONSDALEITE, ArmorItem.Type.LEGGINGS, p));
+    public static final DeferredItem<LonsdaleiteArmor> LONSDALEITE_BOOTS              = ITEMS.registerItem("lonsdaleite_boots",              p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.LONSDALEITE, ArmorItem.Type.BOOTS, p));
+    public static final DeferredItem<LonsdaleiteArmor> PERFECT_LONSDALEITE_HELMET     = ITEMS.registerItem("perfect_lonsdaleite_helmet",     p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.PERFECT_LONSDALEITE, ArmorItem.Type.HELMET, p));
+    public static final DeferredItem<LonsdaleiteArmor> PERFECT_LONSDALEITE_CHESTPLATE = ITEMS.registerItem("perfect_lonsdaleite_chestplate", p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.PERFECT_LONSDALEITE, ArmorItem.Type.CHESTPLATE, p));
+    public static final DeferredItem<LonsdaleiteArmor> PERFECT_LONSDALEITE_LEGGINGS   = ITEMS.registerItem("perfect_lonsdaleite_leggings",   p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.PERFECT_LONSDALEITE, ArmorItem.Type.LEGGINGS, p));
+    public static final DeferredItem<LonsdaleiteArmor> PERFECT_LONSDALEITE_BOOTS      = ITEMS.registerItem("perfect_lonsdaleite_boots",      p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.PERFECT_LONSDALEITE, ArmorItem.Type.BOOTS, p));
 
     // Custom creative tab
     public static final Supplier<CreativeModeTab> LONSDALEITE_TAB = TABS.register("lonsdaleite", () ->

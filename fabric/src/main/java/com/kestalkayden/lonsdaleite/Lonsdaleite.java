@@ -41,7 +41,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.MaceItem;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.ShovelItem;
-import net.minecraft.world.item.equipment.ArmorType;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -97,15 +97,13 @@ public class Lonsdaleite implements ModInitializer {
 
     private static <T extends Item> T register(String name, Function<Item.Properties, T> factory) {
         ResourceLocation id = ResourceLocation.fromNamespaceAndPath(MOD_ID, name);
-        ResourceKey<Item> key = ResourceKey.create(Registries.ITEM, id);
-        T item = factory.apply(new Item.Properties().setId(key));
+        T item = factory.apply(new Item.Properties());
         return Registry.register(BuiltInRegistries.ITEM, id, item);
     }
 
     private static <T extends Block> T registerBlock(String name, Function<BlockBehaviour.Properties, T> factory) {
         ResourceLocation id = ResourceLocation.fromNamespaceAndPath(MOD_ID, name);
-        ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, id);
-        T block = factory.apply(BlockBehaviour.Properties.of().setId(key));
+        T block = factory.apply(BlockBehaviour.Properties.of());
         return Registry.register(BuiltInRegistries.BLOCK, id, block);
     }
 
@@ -133,73 +131,72 @@ public class Lonsdaleite implements ModInitializer {
         // Mining tools — use Item.Properties.pickaxe/axe/shovel/hoe helpers
         LONSDALEITE_PICKAXE = register("lonsdaleite_pickaxe", p ->
             new Lonsdaleite_Pickaxe(LonsdaleiteToolMaterials.LONSDALEITE, 5, -2.8F,
-                p.enchantable(15)));
+                p));
         PERFECT_LONSDALEITE_PICKAXE = register("perfect_lonsdaleite_pickaxe", p ->
             new Perfect_Lonsdaleite_Pickaxe(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 7, -2.7F,
-                p.enchantable(20)));
+                p));
         LONSDALEITE_AXE = register("lonsdaleite_axe", p ->
-            new AxeItem(LonsdaleiteToolMaterials.LONSDALEITE, 8, -3.0F, p));
+            new AxeItem(LonsdaleiteToolMaterials.LONSDALEITE, p));
         PERFECT_LONSDALEITE_AXE = register("perfect_lonsdaleite_axe", p ->
-            new AxeItem(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 11, -2.9F, p));
+            new AxeItem(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, p));
         LONSDALEITE_SHOVEL = register("lonsdaleite_shovel", p ->
-            new ShovelItem(LonsdaleiteToolMaterials.LONSDALEITE, 4, -3.0F, p));
+            new ShovelItem(LonsdaleiteToolMaterials.LONSDALEITE, p));
         PERFECT_LONSDALEITE_SHOVEL = register("perfect_lonsdaleite_shovel", p ->
-            new ShovelItem(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 6, -2.9F, p));
+            new ShovelItem(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, p));
         LONSDALEITE_HOE = register("lonsdaleite_hoe", p ->
-            new HoeItem(LonsdaleiteToolMaterials.LONSDALEITE, 2, 0.0F, p));
+            new HoeItem(LonsdaleiteToolMaterials.LONSDALEITE, p));
         PERFECT_LONSDALEITE_HOE = register("perfect_lonsdaleite_hoe", p ->
-            new HoeItem(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 3, 0.2F, p));
+            new HoeItem(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, p));
         LONSDALEITE_OMNITOOL = register("lonsdaleite_omnitool", p ->
             new Lonsdaleite_Omnitool(LonsdaleiteToolMaterials.LONSDALEITE, 3, -2.9F,
-                p.enchantable(15)));
+                p));
         PERFECT_LONSDALEITE_OMNITOOL = register("perfect_lonsdaleite_omnitool", p ->
             new Lonsdaleite_Omnitool(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 5, -2.8F,
-                p.enchantable(20)));
+                p));
 
         // Weapons — use Item.Properties.sword helper
         LONSDALEITE_SWORD = register("lonsdaleite_sword", p ->
             new Lonsdaleite_Sword(LonsdaleiteToolMaterials.LONSDALEITE, 6, -2.8F,
-                p.enchantable(15)));
+                p));
         PERFECT_LONSDALEITE_SWORD = register("perfect_lonsdaleite_sword", p ->
             new Perfect_Lonsdaleite_Sword(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 8, -2.7F,
-                p.enchantable(20)));
+                p));
         LONSDALEITE_SHORT_SWORD = register("lonsdaleite_short_sword", p ->
             new Lonsdaleite_Short_Sword(LonsdaleiteToolMaterials.LONSDALEITE, 1, -0.7F,
-                p.enchantable(15)));
+                p));
         PERFECT_LONSDALEITE_SHORT_SWORD = register("perfect_lonsdaleite_short_sword", p ->
             new Perfect_Lonsdaleite_Short_Sword(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 2, -0.4F,
-                p.enchantable(20)));
+                p));
         LONSDALEITE_WAR_AXE = register("lonsdaleite_war_axe", p ->
             new Lonsdaleite_War_Axe(LonsdaleiteToolMaterials.LONSDALEITE, 12, -3.6F,
-                p.enchantable(15)));
+                p));
         PERFECT_LONSDALEITE_WAR_AXE = register("perfect_lonsdaleite_war_axe", p ->
             new Perfect_Lonsdaleite_War_Axe(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 15, -3.5F,
-                p.enchantable(20)));
+                p));
 
         // Mace — Lonsdaleite_Mace (vanilla smash attack); stronger melee (+7 base vs vanilla +5), gem-tier durability, breeze-rod handle, repairs with Perfect gems
         LONSDALEITE_MACE = register("lonsdaleite_mace", p ->
             new Lonsdaleite_Mace(p.rarity(Rarity.EPIC)
                 .durability(2640)
                 .component(DataComponents.TOOL, MaceItem.createToolProperties())
-                .repairable(LonsdaleiteToolMaterials.REPAIRS_PERFECT_LONSDALEITE_TOOLS)
                 .attributes(Lonsdaleite_Mace.createAttributes())
-                .enchantable(20)));
+                ));
 
         // Armor — use Item.Properties.humanoidArmor helper
-        LONSDALEITE_HELMET     = register("lonsdaleite_helmet",     p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.LONSDALEITE, ArmorType.HELMET, p));
-        LONSDALEITE_CHESTPLATE = register("lonsdaleite_chestplate", p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.LONSDALEITE, ArmorType.CHESTPLATE, p));
-        LONSDALEITE_LEGGINGS   = register("lonsdaleite_leggings",   p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.LONSDALEITE, ArmorType.LEGGINGS, p));
-        LONSDALEITE_BOOTS      = register("lonsdaleite_boots",      p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.LONSDALEITE, ArmorType.BOOTS, p));
-        PERFECT_LONSDALEITE_HELMET     = register("perfect_lonsdaleite_helmet",     p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.PERFECT_LONSDALEITE, ArmorType.HELMET, p));
-        PERFECT_LONSDALEITE_CHESTPLATE = register("perfect_lonsdaleite_chestplate", p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.PERFECT_LONSDALEITE, ArmorType.CHESTPLATE, p));
-        PERFECT_LONSDALEITE_LEGGINGS   = register("perfect_lonsdaleite_leggings",   p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.PERFECT_LONSDALEITE, ArmorType.LEGGINGS, p));
-        PERFECT_LONSDALEITE_BOOTS      = register("perfect_lonsdaleite_boots",      p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.PERFECT_LONSDALEITE, ArmorType.BOOTS, p));
+        LONSDALEITE_HELMET     = register("lonsdaleite_helmet",     p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.LONSDALEITE, ArmorItem.Type.HELMET, p));
+        LONSDALEITE_CHESTPLATE = register("lonsdaleite_chestplate", p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.LONSDALEITE, ArmorItem.Type.CHESTPLATE, p));
+        LONSDALEITE_LEGGINGS   = register("lonsdaleite_leggings",   p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.LONSDALEITE, ArmorItem.Type.LEGGINGS, p));
+        LONSDALEITE_BOOTS      = register("lonsdaleite_boots",      p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.LONSDALEITE, ArmorItem.Type.BOOTS, p));
+        PERFECT_LONSDALEITE_HELMET     = register("perfect_lonsdaleite_helmet",     p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.PERFECT_LONSDALEITE, ArmorItem.Type.HELMET, p));
+        PERFECT_LONSDALEITE_CHESTPLATE = register("perfect_lonsdaleite_chestplate", p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.PERFECT_LONSDALEITE, ArmorItem.Type.CHESTPLATE, p));
+        PERFECT_LONSDALEITE_LEGGINGS   = register("perfect_lonsdaleite_leggings",   p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.PERFECT_LONSDALEITE, ArmorItem.Type.LEGGINGS, p));
+        PERFECT_LONSDALEITE_BOOTS      = register("perfect_lonsdaleite_boots",      p -> new LonsdaleiteArmor(LonsdaleiteArmorMaterials.PERFECT_LONSDALEITE, ArmorItem.Type.BOOTS, p));
 
         // Blocks
         LONSDALEITE_WARDFRAME_BLOCK = registerBlock("lonsdaleite_wardframe", p ->
             new Lonsdaleite_Wardframe(wardframeProperties(p)));
         LONSDALEITE_WARDFRAME = register("lonsdaleite_wardframe", p ->
-            new Lonsdaleite_Wardframe_Item(LONSDALEITE_WARDFRAME_BLOCK, p.useBlockDescriptionPrefix()));
+            new Lonsdaleite_Wardframe_Item(LONSDALEITE_WARDFRAME_BLOCK, p));
 
         // Custom creative tab
         ResourceKey<CreativeModeTab> tabKey = ResourceKey.create(

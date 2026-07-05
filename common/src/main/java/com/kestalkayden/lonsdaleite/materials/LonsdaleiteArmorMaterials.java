@@ -1,57 +1,41 @@
 package com.kestalkayden.lonsdaleite.materials;
 
+import java.util.List;
 import java.util.Map;
 
 import com.kestalkayden.lonsdaleite.LonsdaleiteCommon;
 
+import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.item.equipment.ArmorMaterial;
-import net.minecraft.world.item.equipment.ArmorType;
-import net.minecraft.world.item.equipment.EquipmentAsset;
-import net.minecraft.world.item.equipment.EquipmentAssets;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.crafting.Ingredient;
 
+/**
+ * 1.21.1 armor materials. Pre-1.21.2 there is no equipment-asset system, so an {@link ArmorMaterial}
+ * carries its defense map, enchantability, equip sound, repair ingredient, texture layers, toughness
+ * and knockback resistance directly, and is handed to {@link ArmorItem} as a {@link Holder}. Both
+ * tiers share the single "lonsdaleite" armor texture (models/armor/lonsdaleite_layer_1/2.png).
+ */
 public class LonsdaleiteArmorMaterials {
 
-    public static final ResourceKey<EquipmentAsset> LONSDALEITE_ASSET = ResourceKey.create(
-        EquipmentAssets.ROOT_ID,
-        ResourceLocation.fromNamespaceAndPath(LonsdaleiteCommon.MOD_ID, "lonsdaleite"));
+    private static final Map<ArmorItem.Type, Integer> DEFENSE = Map.of(
+        ArmorItem.Type.HELMET, 3,
+        ArmorItem.Type.CHESTPLATE, 8,
+        ArmorItem.Type.LEGGINGS, 6,
+        ArmorItem.Type.BOOTS, 3);
 
-    public static final ResourceKey<EquipmentAsset> PERFECT_LONSDALEITE_ASSET = ResourceKey.create(
-        EquipmentAssets.ROOT_ID,
-        ResourceLocation.fromNamespaceAndPath(LonsdaleiteCommon.MOD_ID, "perfect_lonsdaleite"));
+    private static final List<ArmorMaterial.Layer> LAYERS = List.of(
+        new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(LonsdaleiteCommon.MOD_ID, "lonsdaleite")));
 
-    // ArmorMaterial(durability, defense map, enchantmentValue, equipSound, toughness, knockbackResistance, repairIngredient, assetId)
-    public static final ArmorMaterial LONSDALEITE = new ArmorMaterial(
-        44,
-        Map.of(
-            ArmorType.HELMET, 3,
-            ArmorType.CHESTPLATE, 8,
-            ArmorType.LEGGINGS, 6,
-            ArmorType.BOOTS, 3
-        ),
-        15,
-        SoundEvents.ARMOR_EQUIP_DIAMOND,
-        2.0F,
-        0.0F,
-        LonsdaleiteToolMaterials.REPAIRS_LONSDALEITE_TOOLS,
-        LONSDALEITE_ASSET
-    );
+    public static final Holder<ArmorMaterial> LONSDALEITE = Holder.direct(new ArmorMaterial(
+        DEFENSE, 15, SoundEvents.ARMOR_EQUIP_DIAMOND,
+        () -> Ingredient.of(LonsdaleiteToolMaterials.REPAIRS_LONSDALEITE_TOOLS),
+        LAYERS, 2.0F, 0.0F));
 
-    public static final ArmorMaterial PERFECT_LONSDALEITE = new ArmorMaterial(
-        60,
-        Map.of(
-            ArmorType.HELMET, 3,
-            ArmorType.CHESTPLATE, 8,
-            ArmorType.LEGGINGS, 6,
-            ArmorType.BOOTS, 3
-        ),
-        18,
-        SoundEvents.ARMOR_EQUIP_NETHERITE,
-        3.0F,
-        0.1F,
-        LonsdaleiteToolMaterials.REPAIRS_PERFECT_LONSDALEITE_TOOLS,
-        PERFECT_LONSDALEITE_ASSET
-    );
+    public static final Holder<ArmorMaterial> PERFECT_LONSDALEITE = Holder.direct(new ArmorMaterial(
+        DEFENSE, 18, SoundEvents.ARMOR_EQUIP_NETHERITE,
+        () -> Ingredient.of(LonsdaleiteToolMaterials.REPAIRS_PERFECT_LONSDALEITE_TOOLS),
+        LAYERS, 3.0F, 0.1F));
 }

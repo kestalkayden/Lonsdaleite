@@ -2,12 +2,13 @@ package com.kestalkayden.lonsdaleite.items.tools;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.PickaxeItem;
-import net.minecraft.world.item.ToolMaterial;
+import net.minecraft.world.item.Tier;
 
-// 1.21.4: PickaxeItem is a concrete class (removed in 1.21.5); it applies mining
-// behaviour + durability from the material, replacing the Properties.pickaxe() helper.
+// 1.21.1: PickaxeItem(Tier, Properties) supplies mining, durability, enchantability and
+// repair from the tier. attackDamage/attackSpeed are accepted for call-site parity but the
+// pickaxe keeps the standard pickaxe attack profile (the 4-arg tool ctors are 1.21.4+).
 public class Lonsdaleite_Pickaxe extends PickaxeItem {
-    public Lonsdaleite_Pickaxe(ToolMaterial material, int attackDamage, float attackSpeed, Item.Properties properties) {
-        super(material, attackDamage, attackSpeed, properties);
+    public Lonsdaleite_Pickaxe(Tier tier, int attackDamage, float attackSpeed, Item.Properties properties) {
+        super(tier, properties);
     }
 }
