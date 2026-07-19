@@ -1,6 +1,8 @@
 {
     "type": "minecraft:blasting",
-    "ingredient": "lonsdaleite:prepared_lonsdaleite",
+    "ingredient": {
+        "item": "lonsdaleite:prepared_lonsdaleite"
+    },
     "result": {
         "id": "lonsdaleite:refined_lonsdaleite",
         "count": 1

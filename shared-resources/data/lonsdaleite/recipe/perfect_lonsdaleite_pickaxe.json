@@ -6,12 +6,15 @@
         " # "
     ],
     "key": {
-        "E": "lonsdaleite:perfect_lonsdaleite",
-        "#": "minecraft:stick"
+        "E": {
+            "item": "lonsdaleite:perfect_lonsdaleite"
+        },
+        "#": {
+            "item": "minecraft:stick"
+        }
     },
     "result": {
         "id": "lonsdaleite:perfect_lonsdaleite_pickaxe",
         "count": 1
     }
-  }
-  
+}

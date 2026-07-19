@@ -6,10 +6,12 @@
         "RRR"
     ],
     "key": {
-        "R": "lonsdaleite:refined_lonsdaleite"
+        "R": {
+            "item": "lonsdaleite:refined_lonsdaleite"
+        }
     },
     "result": {
         "id": "lonsdaleite:lonsdaleite_wardframe",
         "count": 8
     }
-  }
+}

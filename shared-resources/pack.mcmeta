@@ -1,8 +1,7 @@
 {
   "pack": {
     "description": "Lonsdaleite Tools resources",
-    "pack_format": 84,
-    "min_format": [84, 0],
-    "max_format": [84, 0]
+    "pack_format": 34,
+    "supported_formats": { "min_inclusive": 34, "max_inclusive": 48 }
   }
 }

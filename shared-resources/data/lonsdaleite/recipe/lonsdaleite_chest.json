@@ -6,11 +6,12 @@
         "EEE"
     ],
     "key": {
-        "E": "lonsdaleite:refined_lonsdaleite"
+        "E": {
+            "item": "lonsdaleite:refined_lonsdaleite"
+        }
     },
     "result": {
         "id": "lonsdaleite:lonsdaleite_chestplate",
         "count": 1
     }
-  }
-  
+}

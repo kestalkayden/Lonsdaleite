@@ -6,12 +6,15 @@
         " # "
     ],
     "key": {
-        "E": "lonsdaleite:refined_lonsdaleite",
-        "#": "minecraft:stick"
+        "E": {
+            "item": "lonsdaleite:refined_lonsdaleite"
+        },
+        "#": {
+            "item": "minecraft:stick"
+        }
     },
     "result": {
         "id": "lonsdaleite:lonsdaleite_axe",
         "count": 1
     }
-  }
-  
+}

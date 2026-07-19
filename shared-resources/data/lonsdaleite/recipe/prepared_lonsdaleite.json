@@ -6,13 +6,18 @@
         "#C#"
     ],
     "key": {
-        "#": "minecraft:coal_block",
-        "E": "lonsdaleite:raw_lonsdaleite",
-        "C": "minecraft:gunpowder"
+        "#": {
+            "item": "minecraft:coal_block"
+        },
+        "E": {
+            "item": "lonsdaleite:raw_lonsdaleite"
+        },
+        "C": {
+            "item": "minecraft:gunpowder"
+        }
     },
     "result": {
         "id": "lonsdaleite:prepared_lonsdaleite",
         "count": 1
     }
-  }
-  
+}
