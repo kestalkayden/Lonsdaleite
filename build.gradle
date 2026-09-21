@@ -16,8 +16,12 @@ subprojects {
     repositories {
         maven { name = 'Fabric';        url = 'https://maven.fabricmc.net/' }
         maven { name = 'NeoForged';     url = 'https://maven.neoforged.net/releases' }
-        maven { name = 'Shedaniel';     url = 'https://maven.shedaniel.me/' }
-        maven { name = 'TerraformersMC'; url = 'https://maven.terraformersmc.com/' }
+        // No dependency resolves from maven.terraformersmc.com or maven.shedaniel.me, so both are
+        // deliberately absent rather than merely unused: Gradle contacts every declared repository in
+        // order on a resolution miss, and terraformersmc has a history of serving truncated bodies for
+        // large jars (HTTP 200, then a premature end of the chunked response) — which fails the build
+        // for a dependency it does not even host. Do not re-add a repository without a coordinate that
+        // actually resolves from it.
         mavenCentral()
     }
 }
