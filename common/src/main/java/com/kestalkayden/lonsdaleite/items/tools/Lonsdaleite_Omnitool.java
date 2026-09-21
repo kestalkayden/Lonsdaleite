@@ -1,12 +1,17 @@
 package com.kestalkayden.lonsdaleite.items.tools;
 
 import com.kestalkayden.lonsdaleite.materials.LonsdaleiteToolMaterials;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.BlockTransformer;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ToolMaterial;
+import net.minecraft.world.item.component.BlockTransformers;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -49,28 +54,45 @@ public class Lonsdaleite_Omnitool extends Item {
     /**
      * Runs the vanilla axe/hoe/shovel right-click behaviors in turn so the omnitool strips logs,
      * scrapes/de-waxes copper, tills, makes paths and douses campfires like the dedicated tools.
-     * Delegating to the vanilla items keeps the behavior correct and picks up other mods' blocks;
-     * each call reads the held stack from the context, so it is the omnitool that takes durability.
+     *
+     * <p>Since 26.3 those behaviors are data: each vanilla tool carries a
+     * {@code minecraft:block_transformer} component pointing at a registry entry
+     * ({@link BlockTransformers#AXE}, {@link BlockTransformers#HOE}, {@link BlockTransformers#SHOVEL}),
+     * and {@code Item.useOn} reads that component off the <em>held</em> stack. Delegating to
+     * {@code Items.NETHERITE_AXE.useOn(context)} therefore no longer works — it would look for a
+     * transformer on the omnitool and find none — so this looks the three transformers up directly
+     * and applies them the way {@code Item.useOn} does. That keeps the behavior data-driven (other
+     * mods' / datapacks' additions to those transformers are picked up) and, as before, the
+     * transformer damages the stack from the context, so it is the omnitool that takes durability.
      *
      * <p>On the dirt family both till (hoe) and path (shovel) apply, so till wins by default and
      * sneaking flips the priority to make a path instead.
      */
     @Override
     public InteractionResult useOn(UseOnContext context) {
-        InteractionResult result = Items.NETHERITE_AXE.useOn(context);
+        HolderLookup.RegistryLookup<BlockTransformer> transformers =
+            context.getLevel().registryAccess().lookupOrThrow(Registries.BLOCK_TRANSFORMER);
+        InteractionResult result = transform(transformers, BlockTransformers.AXE, context);
         if (result.consumesAction()) {
             return result;
         }
-        Item first = context.isSecondaryUseActive() ? Items.NETHERITE_SHOVEL : Items.NETHERITE_HOE;
-        Item second = context.isSecondaryUseActive() ? Items.NETHERITE_HOE : Items.NETHERITE_SHOVEL;
-        result = first.useOn(context);
+        ResourceKey<BlockTransformer> first = context.isSecondaryUseActive() ? BlockTransformers.SHOVEL : BlockTransformers.HOE;
+        ResourceKey<BlockTransformer> second = context.isSecondaryUseActive() ? BlockTransformers.HOE : BlockTransformers.SHOVEL;
+        result = transform(transformers, first, context);
         if (result.consumesAction()) {
             return result;
         }
-        result = second.useOn(context);
+        result = transform(transformers, second, context);
         if (result.consumesAction()) {
             return result;
         }
         return super.useOn(context);
+    }
+
+    private static InteractionResult transform(HolderLookup.RegistryLookup<BlockTransformer> transformers,
+                                               ResourceKey<BlockTransformer> key, UseOnContext context) {
+        return transformers.get(key)
+            .map(holder -> holder.value().transformBlock(context))
+            .orElse(InteractionResult.PASS);
     }
 }
