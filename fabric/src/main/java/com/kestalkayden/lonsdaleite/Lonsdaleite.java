@@ -31,16 +31,13 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.MaceItem;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.component.Weapon;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.level.block.Block;
@@ -122,7 +119,7 @@ public class Lonsdaleite implements ModInitializer {
             .requiresCorrectToolForDrops()
             .lightLevel(state -> 7)
             .isSuffocating((state, level, pos) -> false)
-            .isViewBlocking((state, level, pos) -> false);
+            .isViewBlocking((state, level, pos, aabb) -> false);
     }
 
     @Override
@@ -135,7 +132,9 @@ public class Lonsdaleite implements ModInitializer {
         REFINED_LONSDALEITE   = register("refined_lonsdaleite", Item::new);
         PERFECT_LONSDALEITE   = register("perfect_lonsdaleite", Item::new);
 
-        // Mining tools — use Item.Properties.pickaxe/axe/shovel/hoe helpers
+        // Mining tools — use Item.Properties.pickaxe/axe/shovel/hoe helpers (26.3 removed the
+        // AxeItem/ShovelItem/HoeItem classes; axe stripping etc. now ride on the BLOCK_TRANSFORMER
+        // component those helpers attach, and our items are in the vanilla #axes/#shovels/#hoes tags)
         LONSDALEITE_PICKAXE = register("lonsdaleite_pickaxe", p ->
             new Lonsdaleite_Pickaxe(LonsdaleiteToolMaterials.LONSDALEITE, 5, -2.8F,
                 p.pickaxe(LonsdaleiteToolMaterials.LONSDALEITE, 5, -2.8F).enchantable(15)));
@@ -143,17 +142,17 @@ public class Lonsdaleite implements ModInitializer {
             new Perfect_Lonsdaleite_Pickaxe(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 7, -2.7F,
                 p.pickaxe(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 7, -2.7F).enchantable(20)));
         LONSDALEITE_AXE = register("lonsdaleite_axe", p ->
-            new AxeItem(LonsdaleiteToolMaterials.LONSDALEITE, 8, -3.0F, p));
+            new Item(p.axe(LonsdaleiteToolMaterials.LONSDALEITE, 8, -3.0F)));
         PERFECT_LONSDALEITE_AXE = register("perfect_lonsdaleite_axe", p ->
-            new AxeItem(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 11, -2.9F, p));
+            new Item(p.axe(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 11, -2.9F)));
         LONSDALEITE_SHOVEL = register("lonsdaleite_shovel", p ->
-            new ShovelItem(LonsdaleiteToolMaterials.LONSDALEITE, 4, -3.0F, p));
+            new Item(p.shovel(LonsdaleiteToolMaterials.LONSDALEITE, 4, -3.0F)));
         PERFECT_LONSDALEITE_SHOVEL = register("perfect_lonsdaleite_shovel", p ->
-            new ShovelItem(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 6, -2.9F, p));
+            new Item(p.shovel(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 6, -2.9F)));
         LONSDALEITE_HOE = register("lonsdaleite_hoe", p ->
-            new HoeItem(LonsdaleiteToolMaterials.LONSDALEITE, 2, 0.0F, p));
+            new Item(p.hoe(LonsdaleiteToolMaterials.LONSDALEITE, 2, 0.0F)));
         PERFECT_LONSDALEITE_HOE = register("perfect_lonsdaleite_hoe", p ->
-            new HoeItem(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 3, 0.2F, p));
+            new Item(p.hoe(LonsdaleiteToolMaterials.PERFECT_LONSDALEITE, 3, 0.2F)));
         LONSDALEITE_OMNITOOL = register("lonsdaleite_omnitool", p ->
             new Lonsdaleite_Omnitool(LonsdaleiteToolMaterials.LONSDALEITE, 3, -2.9F,
                 p.pickaxe(LonsdaleiteToolMaterials.LONSDALEITE, 3, -2.9F).enchantable(15)));

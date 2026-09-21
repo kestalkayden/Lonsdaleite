@@ -4,9 +4,9 @@ A small expansion mod that adds **Lonsdaleite**, a tier above diamond — an alt
 
 ## Requirements
 
-- Minecraft **26.1.x**
+- Minecraft **26.3**
 - Java **25**
-- Fabric Loader **0.18.4+** with **Fabric API**, *or* NeoForge **26.1+**
+- Fabric Loader **0.19.5+** with **Fabric API**, *or* NeoForge **26.3.0.7-beta+**
 
 ## Downloads
 
@@ -46,7 +46,7 @@ fabric/             Fabric loader subproject
 neoforge/           NeoForge loader subproject
 ```
 
-The Java source classes that don't touch loader-specific APIs (item/material implementations) live in both subprojects' `src/main/java/` and are byte-identical between them, since Minecraft 26.1 ships deobfuscated and uses Mojang's official names on both sides.
+The Java source classes that don't touch loader-specific APIs (item/material implementations) live in both subprojects' `src/main/java/` and are byte-identical between them, since Minecraft 26.3 ships deobfuscated and uses Mojang's official names on both sides.
 
 ## License
 
